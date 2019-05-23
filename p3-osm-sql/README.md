@@ -5,7 +5,7 @@
 **Map Area**: I selected Columbus, Ohio, USA as it is the city I've spent the most time in.
 
 * Location: Columbus, Ohio
-* [OpenStreetMap URL) (https://www.openstreetmap.org/export#map=11/39.9832/-82.9907)
+* [OpenStreetMap URL] (https://www.openstreetmap.org/export#map=11/39.9832/-82.9907)
 
 ## Data Audit
 ---
@@ -17,7 +17,7 @@ The XML file utilizes many tags to structure the data. Using `mapparser.py` I co
 * `'member' : 38206,`
 * `'nd' : 1837440,`
 * `'tag' : 687442,`
-* `'bounds' : 1,`
+* `'bounds' : 1,`S
 * `'note' : 526,`
 * `'meta' : 91356,`
 * `'relation' : 77866`
@@ -61,7 +61,7 @@ sqlite> SELECT COUNT(*) FROM NODES
 ```
 **Output:** `1502751`
 
-**Number of Ways:*
+**Number of Ways:**
 ``` python
 sqlite> SELECT COUNT(*) FROM NODES
 ```
@@ -97,14 +97,20 @@ surveillance    | 38
 ```
 **Number of Unique users:**
 ```python
-sqlite> select COUNT(DISTINCT(u.uid)) FROM (SELECT uid FROM nodes UNION all select uid from ways) u;
+sqlite> SELECT COUNT(DISTINCT(u.uid))
+ FROM (SELECT uid FROM nodes
+      UNION ALL
+       SELECT uid from ways) u;
 ```
 **Output:** `1151`
 
 **Top Contributors:**
 ```python
 sqlite> SELECT USER, COUNT(*) AS EDITS
-  FROM (SELECT USER FROM NODES UNION ALL SELECT USER FROM WAYS) GROUP BY USER
+  FROM (SELECT USER FROM NODES
+        UNION ALL
+        SELECT USER FROM WAYS)
+  GROUP BY USER
   ORDER BY EDITS DESC
   LIMIT 10;
 ```
@@ -125,8 +131,10 @@ St-Motel            | 53533
 
 **Popular Restaurants by Cuisine**
 ```python
-sqlite> SELECT NODES_TAGS.VALUE, COUNT(*) AS NUM FROM NODES_TAGS
-  JOIN (SELECT DISTINCT(ID) FROM NODES_TAGS WHERE VALUE="restaurant") r on nodes_tags.id=r.id
+sqlite> SELECT NODES_TAGS.VALUE, COUNT(*) AS NUM
+  FROM NODES_TAGS
+  JOIN (SELECT DISTINCT(ID) FROM NODES_TAGS
+        WHERE VALUE="restaurant") r on nodes_tags.id=r.id
    WHERE NODES_TAGS.KEY = 'cuisine'
    GROUP BY nodes_tags.value
    ORDER BY NUM DESC
@@ -154,9 +162,11 @@ barbecue          | 2
 
 **Greatest number of Worship Centers by Religion:**
 ```python
-sqlite> SELECT NODES_TAGS.VALUE, COUNT(*) AS NUM FROM NODES_TAGS
-  JOIN (SELECT DISTINCT(ID) FROM NODES_TAGS WHERE VALUE = "place_of_worship") a
-   ON NODES_TAGS.ID = A.ID
+sqlite> SELECT NODES_TAGS.VALUE, COUNT(*) AS NUM
+  FROM NODES_TAGS
+  JOIN (SELECT DISTINCT(ID) FROM NODES_TAGS
+        WHERE VALUE = "place_of_worship") a
+    ON NODES_TAGS.ID = A.ID
    WHERE NODES_TAGS.KEY = "religion"
    GROUP BY NODES_TAGS.VALUE
    ORDER BY NUM DESC
@@ -169,3 +179,9 @@ christian   | 536
 muslim      | 2
 jewish      | 1
 ```
+
+# Conclusion
+---
+Considering the amount of data, and how it is all manually added it is surprisingly clean. However that doesn't mean it IS clean. Each layer reveals more issues that would need to be addressed such as returning lists of counties. Many times there are more than one in the result. Due to the size of the data, and the non-standard tags it can be very easy to have duplication based on different colloquial names.
+
+**Suggestion:** Set a reasonable standard on tags for usage so that things like restaurant:cuisine = american and chicken;american doesn't happen. I'm not quite sure what "chicken;america" means.
