@@ -93,7 +93,7 @@ sqlite> select COUNT(DISTINCT(u.uid)) FROM (SELECT uid FROM nodes UNION all sele
 ```
 **Output:** `1151`
 
-**Top Contributor:** ``
+**Top Contributors:**
 ```python
 sqlite> SELECT USER, COUNT(*) AS EDITS
   FROM (SELECT USER FROM NODES UNION ALL SELECT USER FROM WAYS) GROUP BY USER
@@ -114,3 +114,5 @@ Vid the Kid         | 69057
 kbzimmer            | 61976
 St-Motel            | 53533
 ```
+
+**Popular Amenity**
