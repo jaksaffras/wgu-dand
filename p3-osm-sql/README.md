@@ -180,11 +180,43 @@ muslim      | 2
 jewish      | 1
 ```
 
+**Other Cities in the data by count**
+```python
+sqlite>SELECT tags.value, COUNT(*) as count
+  FROM (SELECT * FROM nodes_tags UNION ALL
+        SELECT * FROM ways_tags) tags
+ WHERE tags.key LIKE '%city'
+ GROUP BY tags.value
+ ORDER BY count DESC
+ limit 15;
+```
+
+**Output:**
+```python
+Columbus            | 3215
+Upper Arlington     | 492
+Dublin              | 403
+Gahanna             | 170
+Westerville         | 150
+Lockbourne          | 130
+Hilliard            | 95
+Worthington         | 65
+Pickerington        | 64
+15                  | 62
+Pataskala           | 55
+Galloway            | 33
+Reynoldsburg        | 33
+Grove City          | 32
+6                   | 27
+```
+Not only is this NOT just Columbus, but it confirms that there would need to be more cleaning efforts to identify what should really be in place of the numerical "city" values.
+
+
 # Conclusion
 ---
 Considering the amount of data, and how it is all manually added it is surprisingly clean. However that doesn't mean it IS clean. Each layer reveals more issues that would need to be addressed such as returning lists of counties. Many times there are more than one in the result. Due to the size of the data, and the non-standard tags it can be very easy to have duplication based on different colloquial names.
 
-**Suggestion:** Set a reasonable standard on tags for usage so that things like restaurant:cuisine = american and chicken;american doesn't happen. I'm not quite sure what "chicken;america" means.
+**Suggestion:** Set a reasonable standard on tags for usage so that things like restaurant:cuisine = american and chicken;american doesn't happen. I'm not quite sure what "chicken;america" means and based on it's usage it doesn't appear many others do either.
 
 A particular constraint however is that standards are difficult to get wide spread use of and would also require retroactive cleaning. It's very possible that it could simply make it worse or be cost prohibitive to implement.
 
@@ -199,4 +231,12 @@ A parser could be implemented to control the input as well, however that will sl
 * data.py: Creates the csvs, parses and shapes them
 * create_db.py: Creates the database and fills it with the data from the csvs
 * mapparser.py: Find the unique tags within the dataset
-*
+* osm_sampling.py: creates the osm_sample file
+* tags.py: counts multiple patterns in the Tags
+* users.py: counts unique users
+* P3-OSM-Data Wrangling with SQL.pdf: The report
+
+## Sources
+
+* https://stackoverflow.com/questions/2392732/sqlite-python-unicode-and-non-utf-data
+* http://puwenning.github.io/2016/02/10/P3-project-openstreetmap-data-case-study/
