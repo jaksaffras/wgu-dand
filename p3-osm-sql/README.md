@@ -185,3 +185,18 @@ jewish      | 1
 Considering the amount of data, and how it is all manually added it is surprisingly clean. However that doesn't mean it IS clean. Each layer reveals more issues that would need to be addressed such as returning lists of counties. Many times there are more than one in the result. Due to the size of the data, and the non-standard tags it can be very easy to have duplication based on different colloquial names.
 
 **Suggestion:** Set a reasonable standard on tags for usage so that things like restaurant:cuisine = american and chicken;american doesn't happen. I'm not quite sure what "chicken;america" means.
+
+A particular constraint however is that standards are difficult to get wide spread use of and would also require retroactive cleaning. It's very possible that it could simply make it worse or be cost prohibitive to implement.
+
+A parser could be implemented to control the input as well, however that will slow the ability to do bulk uploads as they would need to be changed for the parser.
+
+# Files
+
+* Case_study/ : All the scripts used and modified in the OSM Case study
+* README.md : This File
+* columbusOH_sample.osm: sampling of ColumbusOH.osm, taking every 5th element.
+* audit.py: Performs the audit of the street and updates the names
+* data.py: Creates the csvs, parses and shapes them
+* create_db.py: Creates the database and fills it with the data from the csvs
+* mapparser.py: Find the unique tags within the dataset
+*
