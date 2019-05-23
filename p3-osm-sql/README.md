@@ -127,3 +127,14 @@ sqlite> SELECT USER, COUNT(*) AS EDITS
 
 **Output:**
 ```
+woodpeck_fixbot     | 211799
+doktorpixel14       | 167004
+Anonononon          | 157726
+Nimbalo             | 150409
+MerlinPendragon     | 108529
+duck57              | 88834
+AndrewSP37          | 87877
+Vid the Kid         | 69057
+kbzimmer            | 61976
+St-Motel            | 53533
+```
