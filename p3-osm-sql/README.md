@@ -151,3 +151,21 @@ burger            | 4
 chicken;american  | 3
 barbecue          | 2
 ```   
+
+**Greatest number of Worship Centers by Religion:**
+```python
+sqlite> SELECT NODES_TAGS.VALUE, COUNT(*) AS NUM FROM NODES_TAGS
+  JOIN (SELECT DISTINCT(ID) FROM NODES_TAGS WHERE VALUE = "place_of_worship") a
+   ON NODES_TAGS.ID = A.ID
+   WHERE NODES_TAGS.KEY = "religion"
+   GROUP BY NODES_TAGS.VALUE
+   ORDER BY NUM DESC
+   LIMIT 3;
+```
+
+**Output:**
+```python
+christian   | 536
+muslim      | 2
+jewish      | 1
+```
