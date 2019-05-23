@@ -5,6 +5,7 @@
 **Map Area**: I selected Columbus, Ohio, USA as it is the city I've spent the most time in.
 
 * Location: Columbus, Ohio
+* [OpenStreetMap URL) (https://www.openstreetmap.org/export#map=11/39.9832/-82.9907)
 
 ## Data Audit
 ---
@@ -59,6 +60,13 @@ In order to correct these the following functions were utilized within the `audi
 sqlite> SELECT COUNT(*) FROM NODES
 ```
 **Output:** `1502751`
+
+**Number of Ways:*
+``` python
+sqlite> SELECT COUNT(*) FROM NODES
+```
+**Output:** `177854`
+
 
 **A Count by type of the top 15 Node Tags**
 ``` python
@@ -115,4 +123,31 @@ kbzimmer            | 61976
 St-Motel            | 53533
 ```
 
-**Popular Amenity**
+**Popular Restaurants by Cuisine**
+```python
+sqlite> SELECT NODES_TAGS.VALUE, COUNT(*) AS NUM FROM NODES_TAGS
+  JOIN (SELECT DISTINCT(ID) FROM NODES_TAGS WHERE VALUE="restaurant") r on nodes_tags.id=r.id
+   WHERE NODES_TAGS.KEY = 'cuisine'
+   GROUP BY nodes_tags.value
+   ORDER BY NUM DESC
+   LIMIT 15;
+```
+
+**Output:**
+```python
+pizza             | 33
+american          | 26
+chinese           | 22
+mexican           | 16
+sandwich          | 14
+italian           | 10
+asian             | 8
+ice_cream         | 8
+indian            | 6
+greek             | 5
+japanese          | 5  
+sushi             | 5
+burger            | 4
+chicken;american  | 3
+barbecue          | 2
+```   
