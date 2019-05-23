@@ -18,7 +18,6 @@ import pprint
 OSMFILE = "columbusOH.osm"
 OSMFILE_sample = "columbusOH_sample.osm"
 street_type_re = re.compile(r'\b\S+\.?$', re.IGNORECASE)  # Taken directly from Case Study
-# compass_re = re.compile(r"\(([ewsn]|\.*)*\)", re.IGNORECASE)  # Regex to find cardinal directions at any position
 
 
 expected = ["Street", "Avenue", "Boulevard", "Drive", "Court", "Place", "Square", "Lane", "Road",
@@ -35,7 +34,7 @@ mapping = {"St.": "Street",
            "RD": "Road",
            "Rd": "Road",
            "Rd.": "Road",
-           "S": "South",  # Using mapping to mark Cardinal directions with () for easier locating later
+           "S": "South",  
            "S.": "South",
            "SW": "SouthWest",
            "rd": "Road",
