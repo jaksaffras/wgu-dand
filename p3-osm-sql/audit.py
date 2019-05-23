@@ -34,7 +34,7 @@ mapping = {"St.": "Street",
            "RD": "Road",
            "Rd": "Road",
            "Rd.": "Road",
-           "S": "South",  
+           "S": "South",
            "S.": "South",
            "SW": "SouthWest",
            "rd": "Road",
@@ -77,7 +77,7 @@ def audit(osmfile):  # Taken directly from Case Study
     return street_types
 
 
-def update_name(name, mapping):
+def update_name(name, mapping): # riffed off from the sample.md project at the end of the case study
     name = name.split(' ')
     for i in range(len(name)):
         if name[i] in mapping:
