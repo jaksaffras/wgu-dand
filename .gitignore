@@ -1,0 +1,5 @@
+
+*.pyc
+p3-osm-sql/cbus.db
+p3-osm-sql/columbusOH.osm
+p3-osm-sql/working.py

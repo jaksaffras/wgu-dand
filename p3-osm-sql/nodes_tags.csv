@@ -1,0 +1,1721 @@
+id,key,value,type
+153835588,population,607;2006,census
+153835588,ele,243,regular
+153835588,gnis:Class,Populated Place,regular
+153835588,gnis:County,Franklin,regular
+153835588,gnis:County_num,049,regular
+153835588,gnis:ST_alpha,OH,regular
+153835588,gnis:ST_num,39,regular
+153835588,id,1061471,gnis
+153835588,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+153835588,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+153835588,name,Marble Cliff,regular
+153835588,place,village,regular
+153835588,population,607,regular
+153842170,ele,237,regular
+153842170,gnis:Class,Populated Place,regular
+153842170,gnis:County,Franklin,regular
+153842170,gnis:County_num,049,regular
+153842170,gnis:ST_alpha,OH,regular
+153842170,gnis:ST_num,39,regular
+153842170,id,1043531,gnis
+153842170,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+153842170,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+153842170,name,Mount Air,regular
+153842170,place,hamlet,regular
+153843588,ele,235,regular
+153843588,gnis:Class,Populated Place,regular
+153843588,gnis:County,Franklin,regular
+153843588,gnis:County_num,049,regular
+153843588,gnis:ST_alpha,OH,regular
+153843588,gnis:ST_num,39,regular
+153843588,id,1062642,gnis
+153843588,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+153843588,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+153843588,name,Bannon,regular
+153843588,place,neighbourhood,regular
+153846955,ele,244,regular
+153846955,gnis:Class,Populated Place,regular
+153846955,gnis:County,Fairfield,regular
+153846955,gnis:County_num,045,regular
+153846955,gnis:ST_alpha,OH,regular
+153846955,gnis:ST_num,39,regular
+153846955,id,1048928,gnis
+153846955,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+153846955,is_in,"Fairfield,Ohio,Ohio,OH,USA",regular
+153846955,name,Lockville Station,regular
+153846955,place,hamlet,regular
+153848767,population,282;2006,census
+153848767,ele,296,regular
+153848767,gnis:Class,Populated Place,regular
+153848767,gnis:County,Union,regular
+153848767,gnis:County_num,159,regular
+153848767,gnis:ST_alpha,OH,regular
+153848767,gnis:ST_num,39,regular
+153848767,id,1065412,gnis
+153848767,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+153848767,is_in,"Union,Ohio,Ohio,OH,USA",regular
+153848767,name,Unionville Center,regular
+153848767,place,village,regular
+153848767,population,282,regular
+153848787,ele,279,regular
+153848787,gnis:Class,Populated Place,regular
+153848787,gnis:County,Franklin,regular
+153848787,gnis:County_num,049,regular
+153848787,gnis:ST_alpha,OH,regular
+153848787,gnis:ST_num,39,regular
+153848787,id,1059963,gnis
+153848787,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+153848787,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+153848787,name,Olentangy High Bluffs,regular
+153848787,place,hamlet,regular
+153852885,ele,242,regular
+153852885,gnis:Class,Populated Place,regular
+153852885,gnis:County,Franklin,regular
+153852885,gnis:County_num,049,regular
+153852885,gnis:ST_alpha,OH,regular
+153852885,gnis:ST_num,39,regular
+153852885,id,1064801,gnis
+153852885,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+153852885,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+153852885,name,Harrisburg,regular
+153852885,place,hamlet,regular
+153859367,ele,266,regular
+153859367,gnis:Class,Populated Place,regular
+153859367,gnis:County,Franklin,regular
+153859367,gnis:County_num,049,regular
+153859367,gnis:ST_alpha,OH,regular
+153859367,gnis:ST_num,39,regular
+153859367,id,1059961,gnis
+153859367,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+153859367,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+153859367,name,Worthington Hills,regular
+153859367,place,hamlet,regular
+153861966,ele,273,regular
+153861966,gnis:Class,Populated Place,regular
+153861966,gnis:County,Franklin,regular
+153861966,gnis:County_num,049,regular
+153861966,gnis:ST_alpha,OH,regular
+153861966,gnis:ST_num,39,regular
+153861966,id,1064700,gnis
+153861966,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+153861966,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+153861966,name,Galloway,regular
+153861966,place,hamlet,regular
+153861966,wikidata,Q5519170,regular
+153866467,ele,229,regular
+153866467,gnis:Class,Populated Place,regular
+153866467,gnis:County,Franklin,regular
+153866467,gnis:County_num,049,regular
+153866467,gnis:ST_alpha,OH,regular
+153866467,gnis:ST_num,39,regular
+153866467,id,1064603,gnis
+153866467,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+153866467,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+153866467,name,Edward,regular
+153866467,place,hamlet,regular
+153870322,ele,272,regular
+153870322,gnis:Class,Populated Place,regular
+153870322,gnis:County,Franklin,regular
+153870322,gnis:County_num,049,regular
+153870322,gnis:ST_alpha,OH,regular
+153870322,gnis:ST_num,39,regular
+153870322,id,1056786,gnis
+153870322,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+153870322,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+153870322,name,Central College,regular
+153870322,place,hamlet,regular
+153871946,population,2881;2006,census
+153871946,ele,344,regular
+153871946,gnis:Class,Populated Place,regular
+153871946,gnis:County,Licking,regular
+153871946,gnis:County_num,089,regular
+153871946,gnis:ST_alpha,OH,regular
+153871946,gnis:ST_num,39,regular
+153871946,id,1064911,gnis
+153871946,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+153871946,is_in,"Licking,Ohio,Ohio,OH,USA",regular
+153871946,name,Jersey,regular
+153871946,place,village,regular
+153871946,population,2881,regular
+153872099,ele,247,regular
+153872099,gnis:Class,Populated Place,regular
+153872099,gnis:County,Franklin,regular
+153872099,gnis:County_num,049,regular
+153872099,gnis:ST_alpha,OH,regular
+153872099,gnis:ST_num,39,regular
+153872099,id,1065780,gnis
+153872099,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+153872099,name,Milo,regular
+153872099,place,neighbourhood,regular
+153872099,wikipedia,en:Milo-Grogan,regular
+153909294,population,33080;2006,census
+153909294,ele,242,regular
+153909294,gnis:Class,Populated Place,regular
+153909294,gnis:County,Franklin,regular
+153909294,gnis:County_num,049,regular
+153909294,gnis:ST_alpha,OH,regular
+153909294,gnis:ST_num,39,regular
+153909294,id,1064696,gnis
+153909294,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+153909294,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+153909294,name,Gahanna,regular
+153909294,place,town,regular
+153909294,population,33080,regular
+153909294,wikidata,Q1924937,regular
+153909294,wikipedia,"en:Gahanna, Ohio",regular
+153910300,ele,235,regular
+153910300,gnis:County,Franklin,regular
+153910300,gnis:County_num,049,regular
+153910300,gnis:ST_alpha,OH,regular
+153910300,gnis:ST_num,39,regular
+153910300,id,1806783,gnis
+153910300,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+153910300,name,Shepard,regular
+153910300,place,hamlet,regular
+153917273,ele,306,regular
+153917273,gnis:Class,Populated Place,regular
+153917273,gnis:County,Franklin,regular
+153917273,gnis:County_num,049,regular
+153917273,gnis:ST_alpha,OH,regular
+153917273,gnis:ST_num,39,regular
+153917273,id,1071139,gnis
+153917273,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+153917273,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+153917273,name,Ovid,regular
+153917273,place,hamlet,regular
+153923467,ele,223,regular
+153923467,gnis:Class,Populated Place,regular
+153923467,gnis:County,Franklin,regular
+153923467,gnis:County_num,049,regular
+153923467,gnis:ST_alpha,OH,regular
+153923467,gnis:ST_num,39,regular
+153923467,id,1048812,gnis
+153923467,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+153923467,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+153923467,name,Hamilton Meadows,regular
+153923467,place,hamlet,regular
+153927067,ele,231,regular
+153927067,gnis:Class,Populated Place,regular
+153927067,gnis:County,Franklin,regular
+153927067,gnis:County_num,049,regular
+153927067,gnis:ST_alpha,OH,regular
+153927067,gnis:ST_num,39,regular
+153927067,id,1043733,gnis
+153927067,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+153927067,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+153927067,name,Munks Corners,regular
+153927067,place,hamlet,regular
+153927413,ele,302,regular
+153927413,gnis:Class,Populated Place,regular
+153927413,gnis:County,Madison,regular
+153927413,gnis:County_num,097,regular
+153927413,gnis:ST_alpha,OH,regular
+153927413,gnis:ST_num,39,regular
+153927413,id,1048601,gnis
+153927413,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+153927413,is_in,"Madison,Ohio,Ohio,OH,USA",regular
+153927413,name,Chrisman,regular
+153927413,place,hamlet,regular
+153927413,wikidata,Q5108588,regular
+153929170,ele,232,regular
+153929170,gnis:Class,Populated Place,regular
+153929170,gnis:County,Franklin,regular
+153929170,gnis:County_num,049,regular
+153929170,gnis:ST_alpha,OH,regular
+153929170,gnis:ST_num,39,regular
+153929170,id,1730744,gnis
+153929170,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+153929170,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+153929170,name,Winchester Park Addition,regular
+153929170,place,hamlet,regular
+153929749,population,4064;2006,census
+153929749,ele,228,regular
+153929749,gnis:Class,Populated Place,regular
+153929749,gnis:County,Franklin,regular
+153929749,gnis:County_num,049,regular
+153929749,gnis:ST_alpha,OH,regular
+153929749,gnis:ST_num,39,regular
+153929749,id,1065189,gnis
+153929749,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+153929749,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+153929749,name,Obetz,regular
+153929749,place,village,regular
+153929749,population,4064,regular
+153930252,ele,256,regular
+153930252,gnis:Class,Populated Place,regular
+153930252,gnis:County,Fairfield,regular
+153930252,gnis:County_num,045,regular
+153930252,gnis:ST_alpha,OH,regular
+153930252,gnis:ST_num,39,regular
+153930252,id,1048826,gnis
+153930252,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+153930252,is_in,"Fairfield,Ohio,Ohio,OH,USA",regular
+153930252,name,Havensport,regular
+153930252,place,hamlet,regular
+153930252,wikidata,Q22133808,regular
+153935600,ele,263,regular
+153935600,gnis:Class,Populated Place,regular
+153935600,gnis:County,Franklin,regular
+153935600,gnis:County_num,049,regular
+153935600,gnis:ST_alpha,OH,regular
+153935600,gnis:ST_num,39,regular
+153935600,id,1071141,gnis
+153935600,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+153935600,name,Linden,regular
+153935600,place,quarter,regular
+153935600,wikidata,Q1826015,regular
+153935600,wikipedia,"en:Linden, Columbus, Ohio",regular
+153937261,ele,331,regular
+153937261,gnis:Class,Populated Place,regular
+153937261,gnis:County,Licking,regular
+153937261,gnis:County_num,089,regular
+153937261,gnis:ST_alpha,OH,regular
+153937261,gnis:ST_num,39,regular
+153937261,id,1049228,gnis
+153937261,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+153937261,is_in,"Licking,Ohio,Ohio,OH,USA",regular
+153937261,name,Summit Station,regular
+153937261,place,hamlet,regular
+153937464,ele,266,regular
+153937464,gnis:Class,Populated Place,regular
+153937464,gnis:County,Franklin,regular
+153937464,gnis:County_num,049,regular
+153937464,gnis:ST_alpha,OH,regular
+153937464,gnis:ST_num,39,regular
+153937464,id,1067539,gnis
+153937464,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+153937464,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+153937464,name,Briarcliff,regular
+153937464,place,hamlet,regular
+153946746,ele,245,regular
+153946746,gnis:County,Franklin,regular
+153946746,gnis:County_num,049,regular
+153946746,gnis:ST_alpha,OH,regular
+153946746,gnis:ST_num,39,regular
+153946746,id,1806781,gnis
+153946746,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+153946746,name,Roseland,regular
+153946746,place,hamlet,regular
+153950379,ele,321,regular
+153950379,gnis:Class,Populated Place,regular
+153950379,gnis:County,Licking,regular
+153950379,gnis:County_num,089,regular
+153950379,gnis:ST_alpha,OH,regular
+153950379,gnis:ST_num,39,regular
+153950379,id,1083524,gnis
+153950379,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+153950379,is_in,"Licking,Ohio,Ohio,OH,USA",regular
+153950379,name,Sunshine Park,regular
+153950379,place,hamlet,regular
+153950744,population,264;2006,census
+153950744,ele,217,regular
+153950744,gnis:Class,Populated Place,regular
+153950744,gnis:County,Franklin,regular
+153950744,gnis:County_num,049,regular
+153950744,gnis:ST_alpha,OH,regular
+153950744,gnis:ST_num,39,regular
+153950744,id,1065015,gnis
+153950744,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+153950744,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+153950744,name,Lockbourne,regular
+153950744,place,village,regular
+153950744,population,264,regular
+153954181,ele,304,regular
+153954181,gnis:Class,Populated Place,regular
+153954181,gnis:County,Licking,regular
+153954181,gnis:County_num,089,regular
+153954181,gnis:ST_alpha,OH,regular
+153954181,gnis:ST_num,39,regular
+153954181,id,1065295,gnis
+153954181,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+153954181,is_in,"Licking,Ohio,Ohio,OH,USA",regular
+153954181,name,Scott Corners,regular
+153954181,place,hamlet,regular
+153958406,ele,269,regular
+153958406,gnis:Class,Populated Place,regular
+153958406,gnis:County,Franklin,regular
+153958406,gnis:County_num,049,regular
+153958406,gnis:ST_alpha,OH,regular
+153958406,gnis:ST_num,39,regular
+153958406,id,1061675,gnis
+153958406,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+153958406,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+153958406,name,Taylor Station,regular
+153958406,place,hamlet,regular
+153958590,ele,237,regular
+153958590,gnis:Class,Populated Place,regular
+153958590,gnis:County,Franklin,regular
+153958590,gnis:County_num,049,regular
+153958590,gnis:ST_alpha,OH,regular
+153958590,gnis:ST_num,39,regular
+153958590,id,1065424,gnis
+153958590,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+153958590,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+153958590,name,Valley View,regular
+153958590,place,hamlet,regular
+153961318,ele,342,regular
+153961318,gnis:Class,Populated Place,regular
+153961318,gnis:County,Licking,regular
+153961318,gnis:County_num,089,regular
+153961318,gnis:ST_alpha,OH,regular
+153961318,gnis:ST_num,39,regular
+153961318,id,1061222,gnis
+153961318,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+153961318,is_in,"Licking,Ohio,Ohio,OH,USA",regular
+153961318,name,Tylers Corners,regular
+153961318,place,hamlet,regular
+153966727,population,31820;2006,census
+153966727,ele,259,regular
+153966727,gnis:Class,Populated Place,regular
+153966727,gnis:County,Franklin,regular
+153966727,gnis:County_num,049,regular
+153966727,gnis:ST_alpha,OH,regular
+153966727,gnis:ST_num,39,regular
+153966727,id,1048806,gnis
+153966727,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+153966727,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+153966727,name,Grove City,regular
+153966727,place,town,regular
+153966727,population,31820,regular
+153966727,wikidata,Q590713,regular
+153966727,wikipedia,"en:Grove City, Ohio",regular
+153973511,population,27015;2006,census
+153973511,ele,234,regular
+153973511,gnis:Class,Populated Place,regular
+153973511,gnis:County,Franklin,regular
+153973511,gnis:County_num,049,regular
+153973511,gnis:ST_alpha,OH,regular
+153973511,gnis:ST_num,39,regular
+153973511,id,1063065,gnis
+153973511,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+153973511,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+153973511,name,Truro,regular
+153973511,place,hamlet,regular
+153982815,capital,4,regular
+153982815,population,722033;2006,census
+153982815,ele,235,regular
+153982815,gnis:County,Franklin,regular
+153982815,gnis:County_num,049,regular
+153982815,gnis:ST_alpha,OH,regular
+153982815,gnis:ST_num,39,regular
+153982815,id,1080996,gnis
+153982815,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+153982815,continent,North America,is_in
+153982815,country,USA,is_in
+153982815,name,Columbus,regular
+153982815,ar,كولومبوس,name
+153982815,en,Columbus,name
+153982815,pl,Columbus,name
+153982815,ru,Колумбус,name
+153982815,ta,கொலம்பஸ்,name
+153982815,uk,Колумбус,name
+153982815,place,city,regular
+153982815,population,797434,regular
+153982815,state_capital,yes,regular
+153982815,wikidata,Q16567,regular
+153982815,wikipedia,"en:Columbus, Ohio",regular
+153987438,ele,311,regular
+153987438,gnis:Class,Populated Place,regular
+153987438,gnis:County,Licking,regular
+153987438,gnis:County_num,089,regular
+153987438,gnis:ST_alpha,OH,regular
+153987438,gnis:ST_num,39,regular
+153987438,id,1060988,gnis
+153987438,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+153987438,is_in,"Licking,Ohio,Ohio,OH,USA",regular
+153987438,name,Columbia Center,regular
+153987438,place,hamlet,regular
+153994839,ele,289,regular
+153994839,gnis:Class,Populated Place,regular
+153994839,gnis:County,Franklin,regular
+153994839,gnis:County_num,049,regular
+153994839,gnis:ST_alpha,OH,regular
+153994839,gnis:ST_num,39,regular
+153994839,id,1064815,gnis
+153994839,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+153994839,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+153994839,name,Hayden,regular
+153994839,place,hamlet,regular
+153995155,ele,271,regular
+153995155,gnis:Class,Populated Place,regular
+153995155,gnis:County,Franklin,regular
+153995155,gnis:County_num,049,regular
+153995155,gnis:ST_alpha,OH,regular
+153995155,gnis:ST_num,39,regular
+153995155,id,1059964,gnis
+153995155,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+153995155,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+153995155,name,Northwoods,regular
+153995155,place,hamlet,regular
+154010445,population,13079;2006,census
+154010445,ele,263,regular
+154010445,gnis:Class,Populated Place,regular
+154010445,gnis:County,Franklin,regular
+154010445,gnis:County_num,049,regular
+154010445,gnis:ST_alpha,OH,regular
+154010445,gnis:ST_num,39,regular
+154010445,id,1056581,gnis
+154010445,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154010445,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154010445,name,Worthington,regular
+154010445,place,town,regular
+154010445,population,13079,regular
+154019693,ele,281,regular
+154019693,gnis:Class,Populated Place,regular
+154019693,gnis:County,Franklin,regular
+154019693,gnis:County_num,049,regular
+154019693,gnis:ST_alpha,OH,regular
+154019693,gnis:ST_num,39,regular
+154019693,id,1059952,gnis
+154019693,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154019693,name,Lincoln Village,regular
+154019693,place,quarter,regular
+154019693,wikipedia,"en:Lincoln Village, Ohio",regular
+154021165,population,5798;2006,census
+154021165,ele,304,regular
+154021165,gnis:Class,Populated Place,regular
+154021165,gnis:County,Delaware,regular
+154021165,gnis:County_num,041,regular
+154021165,gnis:ST_alpha,OH,regular
+154021165,gnis:ST_num,39,regular
+154021165,id,1064793,gnis
+154021165,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154021165,is_in,"Delaware,Ohio,Ohio,OH,USA",regular
+154021165,name,Harlem,regular
+154021165,place,village,regular
+154021165,population,5798,regular
+154021165,wikidata,Q22133797,regular
+154021270,population,11494;2006,census
+154021270,ele,277,regular
+154021270,gnis:Class,Populated Place,regular
+154021270,gnis:County,Delaware,regular
+154021270,gnis:County_num,041,regular
+154021270,gnis:ST_alpha,OH,regular
+154021270,gnis:ST_num,39,regular
+154021270,id,1061569,gnis
+154021270,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154021270,is_in,"Delaware,Ohio,Ohio,OH,USA",regular
+154021270,name,Powell,regular
+154021270,place,town,regular
+154021270,population,11494,regular
+154022857,ele,248,regular
+154022857,gnis:Class,Populated Place,regular
+154022857,gnis:County,Franklin,regular
+154022857,gnis:County_num,049,regular
+154022857,gnis:ST_alpha,OH,regular
+154022857,gnis:ST_num,39,regular
+154022857,id,1067545,gnis
+154022857,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154022857,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154022857,name,Idlewood Manor,regular
+154022857,place,hamlet,regular
+154023737,population,12643;2006,census
+154023737,ele,305,regular
+154023737,gnis:Class,Populated Place,regular
+154023737,gnis:County,Licking,regular
+154023737,gnis:County_num,089,regular
+154023737,gnis:ST_alpha,OH,regular
+154023737,gnis:ST_num,39,regular
+154023737,id,1049066,gnis
+154023737,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154023737,is_in,"Licking,Ohio,Ohio,OH,USA",regular
+154023737,name,Pataskala,regular
+154023737,place,town,regular
+154023737,population,12643,regular
+154023830,population,15397;2006,census
+154023830,ele,270,regular
+154023830,gnis:Class,Populated Place,regular
+154023830,gnis:County,Franklin,regular
+154023830,gnis:County_num,049,regular
+154023830,gnis:ST_alpha,OH,regular
+154023830,gnis:ST_num,39,regular
+154023830,id,1056516,gnis
+154023830,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154023830,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154023830,name,Sharon,regular
+154023830,note,Downgraded to Municipality because this likely is the marker for Sharon Township,regular
+154023830,place,municipality,regular
+154023830,population,15397,regular
+154027894,ele,265,regular
+154027894,gnis:Class,Populated Place,regular
+154027894,gnis:County,Fairfield,regular
+154027894,gnis:County_num,045,regular
+154027894,gnis:ST_alpha,OH,regular
+154027894,gnis:ST_num,39,regular
+154027894,id,1064795,gnis
+154027894,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154027894,is_in,"Fairfield,Ohio,Ohio,OH,USA",regular
+154027894,name,Harley,regular
+154027894,place,hamlet,regular
+154028047,ele,368,regular
+154028047,gnis:Class,Populated Place,regular
+154028047,gnis:County,Licking,regular
+154028047,gnis:County_num,089,regular
+154028047,gnis:ST_alpha,OH,regular
+154028047,gnis:ST_num,39,regular
+154028047,id,1061174,gnis
+154028047,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154028047,is_in,"Licking,Ohio,Ohio,OH,USA",regular
+154028047,name,Panhandle Corners,regular
+154028047,place,hamlet,regular
+154028112,ele,232,regular
+154028112,gnis:Class,Populated Place,regular
+154028112,gnis:County,Franklin,regular
+154028112,gnis:County_num,049,regular
+154028112,gnis:ST_alpha,OH,regular
+154028112,gnis:ST_num,39,regular
+154028112,id,1049264,gnis
+154028112,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154028112,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154028112,name,Valley Crossing,regular
+154028112,place,hamlet,regular
+154029140,ele,306,regular
+154029140,gnis:Class,Populated Place,regular
+154029140,gnis:County,Madison,regular
+154029140,gnis:County_num,097,regular
+154029140,gnis:ST_alpha,OH,regular
+154029140,gnis:ST_num,39,regular
+154029140,id,1048944,gnis
+154029140,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154029140,is_in,"Madison,Ohio,Ohio,OH,USA",regular
+154029140,name,Madison Lake,regular
+154029140,place,hamlet,regular
+154032146,population,31301;2006,census
+154032146,ele,253,regular
+154032146,gnis:Class,Populated Place,regular
+154032146,gnis:County,Franklin,regular
+154032146,gnis:County_num,049,regular
+154032146,gnis:ST_alpha,OH,regular
+154032146,gnis:ST_num,39,regular
+154032146,id,1056264,gnis
+154032146,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154032146,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154032146,name,Dublin,regular
+154032146,place,town,regular
+154032146,population,31301,regular
+154032146,wikidata,Q988937,regular
+154034303,ele,225,regular
+154034303,gnis:Class,Populated Place,regular
+154034303,gnis:County,Franklin,regular
+154034303,gnis:County_num,049,regular
+154034303,gnis:ST_alpha,OH,regular
+154034303,gnis:ST_num,39,regular
+154034303,id,1061593,gnis
+154034303,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154034303,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154034303,name,Reese,regular
+154034303,place,hamlet,regular
+154036219,ele,289,regular
+154036219,gnis:Class,Populated Place,regular
+154036219,gnis:County,Madison,regular
+154036219,gnis:County_num,097,regular
+154036219,gnis:ST_alpha,OH,regular
+154036219,gnis:ST_num,39,regular
+154036219,id,1064933,gnis
+154036219,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154036219,is_in,"Madison,Ohio,Ohio,OH,USA",regular
+154036219,name,Kileville,regular
+154036219,place,hamlet,regular
+154036219,wikidata,Q6406826,regular
+154036315,population,3978;2006,census
+154036315,ele,268,regular
+154036315,gnis:Class,Populated Place,regular
+154036315,gnis:County,Franklin,regular
+154036315,gnis:County_num,049,regular
+154036315,gnis:ST_alpha,OH,regular
+154036315,gnis:ST_num,39,regular
+154036315,id,1056816,gnis
+154036315,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154036315,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154036315,name,Clinton,regular
+154036315,place,hamlet,regular
+154037795,ele,259,regular
+154037795,gnis:Class,Populated Place,regular
+154037795,gnis:County,Franklin,regular
+154037795,gnis:County_num,049,regular
+154037795,gnis:ST_alpha,OH,regular
+154037795,gnis:ST_num,39,regular
+154037795,id,1063421,gnis
+154037795,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154037795,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154037795,name,Pinhook,regular
+154037795,place,hamlet,regular
+154043528,ele,253,regular
+154043528,gnis:Class,Populated Place,regular
+154043528,gnis:County,Franklin,regular
+154043528,gnis:County_num,049,regular
+154043528,gnis:ST_alpha,OH,regular
+154043528,gnis:ST_num,39,regular
+154043528,id,1060071,gnis
+154043528,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154043528,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154043528,name,Linworth,regular
+154043528,place,hamlet,regular
+154044234,ele,297,regular
+154044234,gnis:Class,Populated Place,regular
+154044234,gnis:County,Madison,regular
+154044234,gnis:County_num,097,regular
+154044234,gnis:ST_alpha,OH,regular
+154044234,gnis:ST_num,39,regular
+154044234,id,1064995,gnis
+154044234,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154044234,is_in,"Madison,Ohio,Ohio,OH,USA",regular
+154044234,name,Lilly Chapel,regular
+154044234,place,hamlet,regular
+154044234,wikidata,Q6548356,regular
+154044588,population,12283;2006,census
+154044588,ele,241,regular
+154044588,gnis:County,Franklin,regular
+154044588,gnis:County_num,049,regular
+154044588,gnis:ST_alpha,OH,regular
+154044588,gnis:ST_num,39,regular
+154044588,id,1048522,gnis
+154044588,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154044588,name,Bexley,regular
+154044588,place,town,regular
+154044588,population,12283,regular
+154048542,ele,327,regular
+154048542,gnis:Class,Populated Place,regular
+154048542,gnis:County,Franklin,regular
+154048542,gnis:County_num,049,regular
+154048542,gnis:ST_alpha,OH,regular
+154048542,gnis:ST_num,39,regular
+154048542,id,1059944,gnis
+154048542,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154048542,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154048542,name,Oakland,regular
+154048542,place,hamlet,regular
+154056945,population,1263;2006,census
+154056945,ele,258,regular
+154056945,gnis:Class,Populated Place,regular
+154056945,gnis:County,Franklin,regular
+154056945,gnis:County_num,049,regular
+154056945,gnis:ST_alpha,OH,regular
+154056945,gnis:ST_num,39,regular
+154056945,id,1056902,gnis
+154056945,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154056945,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154056945,name,Minerva Park,regular
+154056945,place,village,regular
+154056945,population,1263,regular
+154063298,ele,368,regular
+154063298,gnis:Class,Populated Place,regular
+154063298,gnis:County,Licking,regular
+154063298,gnis:County_num,089,regular
+154063298,gnis:ST_alpha,OH,regular
+154063298,gnis:ST_num,39,regular
+154063298,id,1867446,gnis
+154063298,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154063298,is_in,"Licking,Ohio,Ohio,OH,USA",regular
+154063298,name,Beechwood Trails,regular
+154063298,place,hamlet,regular
+154065619,ele,300,regular
+154065619,gnis:Class,Populated Place,regular
+154065619,gnis:County,Madison,regular
+154065619,gnis:County_num,097,regular
+154065619,gnis:ST_alpha,OH,regular
+154065619,gnis:ST_num,39,regular
+154065619,id,1064437,gnis
+154065619,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154065619,is_in,"Madison,Ohio,Ohio,OH,USA",regular
+154065619,name,Big Plain,regular
+154065619,place,hamlet,regular
+154065619,wikidata,Q4906132,regular
+154068435,population,470;2006,census
+154068435,ele,240,regular
+154068435,gnis:Class,Populated Place,regular
+154068435,gnis:County,Franklin,regular
+154068435,gnis:County_num,049,regular
+154068435,gnis:ST_alpha,OH,regular
+154068435,gnis:ST_num,39,regular
+154068435,id,1056491,gnis
+154068435,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154068435,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154068435,name,Riverlea,regular
+154068435,place,village,regular
+154068435,population,470,regular
+154068740,ele,271,regular
+154068740,gnis:Class,Populated Place,regular
+154068740,gnis:County,Franklin,regular
+154068740,gnis:County_num,049,regular
+154068740,gnis:ST_alpha,OH,regular
+154068740,gnis:ST_num,39,regular
+154068740,id,1067550,gnis
+154068740,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154068740,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154068740,name,Rose Hill Heights,regular
+154068740,place,hamlet,regular
+154073748,ele,321,regular
+154073748,gnis:Class,Populated Place,regular
+154073748,gnis:County,Licking,regular
+154073748,gnis:County_num,089,regular
+154073748,gnis:ST_alpha,OH,regular
+154073748,gnis:ST_num,39,regular
+154073748,id,1065442,gnis
+154073748,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154073748,is_in,"Licking,Ohio,Ohio,OH,USA",regular
+154073748,name,Wagram,regular
+154073748,place,hamlet,regular
+154073768,ele,250,regular
+154073768,gnis:Class,Populated Place,regular
+154073768,gnis:County,Franklin,regular
+154073768,gnis:County_num,049,regular
+154073768,gnis:ST_alpha,OH,regular
+154073768,gnis:ST_num,39,regular
+154073768,id,1060069,gnis
+154073768,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154073768,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154073768,name,Olentangy,regular
+154073768,place,hamlet,regular
+154075711,ele,299,regular
+154075711,gnis:Class,Populated Place,regular
+154075711,gnis:County,Union,regular
+154075711,gnis:County_num,159,regular
+154075711,gnis:ST_alpha,OH,regular
+154075711,gnis:ST_num,39,regular
+154075711,id,1039100,gnis
+154075711,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154075711,is_in,"Union,Ohio,Ohio,OH,USA",regular
+154075711,name,Chuckery,regular
+154075711,place,hamlet,regular
+154075711,wikidata,Q5115870,regular
+154076094,ele,255,regular
+154076094,gnis:Class,Populated Place,regular
+154076094,gnis:County,Fairfield,regular
+154076094,gnis:County_num,045,regular
+154076094,gnis:ST_alpha,OH,regular
+154076094,gnis:ST_num,39,regular
+154076094,id,1061537,gnis
+154076094,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154076094,is_in,"Fairfield,Ohio,Ohio,OH,USA",regular
+154076094,name,Pickerington,regular
+154076094,place,hamlet,regular
+154079113,ele,233,regular
+154079113,gnis:Class,Populated Place,regular
+154079113,gnis:County,Fairfield,regular
+154079113,gnis:County_num,045,regular
+154079113,gnis:ST_alpha,OH,regular
+154079113,gnis:ST_num,39,regular
+154079113,id,1048579,gnis
+154079113,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154079113,is_in,"Fairfield,Ohio,Ohio,OH,USA",regular
+154079113,name,Canal Winchester,regular
+154079113,place,hamlet,regular
+154088975,ele,266,regular
+154088975,gnis:Class,Populated Place,regular
+154088975,gnis:County,Franklin,regular
+154088975,gnis:County_num,049,regular
+154088975,gnis:ST_alpha,OH,regular
+154088975,gnis:ST_num,39,regular
+154088975,id,1048650,gnis
+154088975,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154088975,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154088975,name,Darbydale,regular
+154088975,place,hamlet,regular
+154088975,wikidata,Q5222307,regular
+154094968,ele,363,regular
+154094968,gnis:Class,Populated Place,regular
+154094968,gnis:County,Licking,regular
+154094968,gnis:County_num,089,regular
+154094968,gnis:ST_alpha,OH,regular
+154094968,gnis:ST_num,39,regular
+154094968,id,1065029,gnis
+154094968,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154094968,is_in,"Licking,Ohio,Ohio,OH,USA",regular
+154094968,name,Millers Corners,regular
+154094968,place,hamlet,regular
+154095404,ele,214,regular
+154095404,gnis:Class,Populated Place,regular
+154095404,gnis:County,Franklin,regular
+154095404,gnis:County_num,049,regular
+154095404,gnis:ST_alpha,OH,regular
+154095404,gnis:ST_num,39,regular
+154095404,id,1065306,gnis
+154095404,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154095404,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154095404,name,Shadeville,regular
+154095404,place,hamlet,regular
+154101647,ele,346,regular
+154101647,gnis:Class,Populated Place,regular
+154101647,gnis:County,Licking,regular
+154101647,gnis:County_num,089,regular
+154101647,gnis:ST_alpha,OH,regular
+154101647,gnis:ST_num,39,regular
+154101647,id,1052170,gnis
+154101647,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154101647,is_in,"Licking,Ohio,Ohio,OH,USA",regular
+154101647,name,Beech,regular
+154101647,place,hamlet,regular
+154108818,ele,268,regular
+154108818,gnis:Class,Populated Place,regular
+154108818,gnis:County,Fairfield,regular
+154108818,gnis:County_num,045,regular
+154108818,gnis:ST_alpha,OH,regular
+154108818,gnis:ST_num,39,regular
+154108818,id,1049214,gnis
+154108818,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154108818,is_in,"Fairfield,Ohio,Ohio,OH,USA",regular
+154108818,name,Stoudertown,regular
+154108818,place,hamlet,regular
+154109306,population,3957;2006,census
+154109306,ele,351,regular
+154109306,gnis:Class,Populated Place,regular
+154109306,gnis:County,Licking,regular
+154109306,gnis:County_num,089,regular
+154109306,gnis:ST_alpha,OH,regular
+154109306,gnis:ST_num,39,regular
+154109306,id,1048875,gnis
+154109306,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154109306,is_in,"Licking,Ohio,Ohio,OH,USA",regular
+154109306,name,Johnstown,regular
+154109306,place,village,regular
+154109306,population,3957,regular
+154114489,ele,312,regular
+154114489,gnis:Class,Populated Place,regular
+154114489,gnis:County,Franklin,regular
+154114489,gnis:County_num,049,regular
+154114489,gnis:ST_alpha,OH,regular
+154114489,gnis:ST_num,39,regular
+154114489,id,1065106,gnis
+154114489,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154114489,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154114489,name,New Albany,regular
+154114489,place,town,regular
+154114489,population,7724,regular
+154115648,ele,327,regular
+154115648,gnis:Class,Populated Place,regular
+154115648,gnis:County,Licking,regular
+154115648,gnis:County_num,089,regular
+154115648,gnis:ST_alpha,OH,regular
+154115648,gnis:ST_num,39,regular
+154115648,id,1065225,gnis
+154115648,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154115648,is_in,"Licking,Ohio,Ohio,OH,USA",regular
+154115648,name,Outville,regular
+154115648,place,hamlet,regular
+154121718,ele,281,regular
+154121718,gnis:Class,Populated Place,regular
+154121718,gnis:County,Franklin,regular
+154121718,gnis:County_num,049,regular
+154121718,gnis:ST_alpha,OH,regular
+154121718,gnis:ST_num,39,regular
+154121718,id,1049010,gnis
+154121718,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154121718,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154121718,name,New Rome,regular
+154121718,place,locality,regular
+154121718,wikidata,Q2395773,regular
+154125530,ele,225,regular
+154125530,gnis:Class,Populated Place,regular
+154125530,gnis:County,Franklin,regular
+154125530,gnis:County_num,049,regular
+154125530,gnis:ST_alpha,OH,regular
+154125530,gnis:ST_num,39,regular
+154125530,id,1059847,gnis
+154125530,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154125530,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154125530,name,Steelton,regular
+154125530,place,hamlet,regular
+154128486,created_by,Potlatch 0.10f,regular
+154128486,ele,281,regular
+154128486,gnis:Class,Populated Place,regular
+154128486,gnis:County,Franklin,regular
+154128486,gnis:County_num,049,regular
+154128486,gnis:ST_alpha,OH,regular
+154128486,gnis:ST_num,39,regular
+154128486,id,1059952,gnis
+154128486,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154128486,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154128486,place,hamlet,regular
+154136451,ele,290,regular
+154136451,gnis:Class,Populated Place,regular
+154136451,gnis:County,Franklin,regular
+154136451,gnis:County_num,049,regular
+154136451,gnis:ST_alpha,OH,regular
+154136451,gnis:ST_num,39,regular
+154136451,id,1064445,gnis
+154136451,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154136451,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154136451,name,Blacklick,regular
+154136451,place,hamlet,regular
+154136451,wikidata,Q4923095,regular
+154139821,population,541;2006,census
+154139821,ele,284,regular
+154139821,gnis:Class,Populated Place,regular
+154139821,gnis:County,Licking,regular
+154139821,gnis:County_num,089,regular
+154139821,gnis:ST_alpha,OH,regular
+154139821,gnis:ST_num,39,regular
+154139821,id,1056381,gnis
+154139821,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154139821,is_in,"Licking,Ohio,Ohio,OH,USA",regular
+154139821,name,Kirkersville,regular
+154139821,place,village,regular
+154139821,population,541,regular
+154142590,ele,233,regular
+154142590,gnis:Class,Populated Place,regular
+154142590,gnis:County,Franklin,regular
+154142590,gnis:County_num,049,regular
+154142590,gnis:ST_alpha,OH,regular
+154142590,gnis:ST_num,39,regular
+154142590,id,1064490,gnis
+154142590,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154142590,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154142590,name,Briggsdale,regular
+154142590,place,hamlet,regular
+154142590,wikidata,Q19874038,regular
+154152439,population,4225;2010,census
+154152439,ele,285,regular
+154152439,gnis:County,Madison,regular
+154152439,gnis:County_num,097,regular
+154152439,gnis:ST_alpha,OH,regular
+154152439,gnis:ST_num,39,regular
+154152439,id,1061547,gnis
+154152439,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154152439,name,Plain City,regular
+154152439,place,village,regular
+154152439,population,4225,regular
+154152439,date,2010,population
+154152439,website,https://www.plain-city.com/,regular
+154152439,wikidata,Q1816799,regular
+154152439,wikipedia,"en:Plain City, Ohio",regular
+154162836,ele,242,regular
+154162836,gnis:Class,Populated Place,regular
+154162836,gnis:County,Franklin,regular
+154162836,gnis:County_num,049,regular
+154162836,gnis:ST_alpha,OH,regular
+154162836,gnis:ST_num,39,regular
+154162836,id,1065285,gnis
+154162836,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154162836,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154162836,name,San Margherita,regular
+154162836,place,hamlet,regular
+154162836,wikidata,Q7414825,regular
+154167757,ele,270,regular
+154167757,gnis:Class,Populated Place,regular
+154167757,gnis:County,Franklin,regular
+154167757,gnis:County_num,049,regular
+154167757,gnis:ST_alpha,OH,regular
+154167757,gnis:ST_num,39,regular
+154167757,id,1067541,gnis
+154167757,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154167757,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154167757,name,Brookside Park,regular
+154167757,place,hamlet,regular
+154173326,ele,249,regular
+154173326,gnis:Class,Populated Place,regular
+154173326,gnis:County,Franklin,regular
+154173326,gnis:County_num,049,regular
+154173326,gnis:ST_alpha,OH,regular
+154173326,gnis:ST_num,39,regular
+154173326,id,1056471,gnis
+154173326,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154173326,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154173326,name,Parks Mills,regular
+154173326,place,hamlet,regular
+154176212,population,28374;2006,census
+154176212,ele,265,regular
+154176212,gnis:Class,Populated Place,regular
+154176212,gnis:County,Franklin,regular
+154176212,gnis:County_num,049,regular
+154176212,gnis:ST_alpha,OH,regular
+154176212,gnis:ST_num,39,regular
+154176212,id,1061759,gnis
+154176212,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154176212,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154176212,name,Westerville,regular
+154176212,place,town,regular
+154176212,population,28374,regular
+154176212,wikidata,Q2233932,regular
+154176212,wikipedia,"en:Westerville, Ohio",regular
+154177215,ele,232,regular
+154177215,gnis:Class,Populated Place,regular
+154177215,gnis:County,Franklin,regular
+154177215,gnis:County_num,049,regular
+154177215,gnis:ST_alpha,OH,regular
+154177215,gnis:ST_num,39,regular
+154177215,id,1071140,gnis
+154177215,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154177215,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154177215,name,Seagrave,regular
+154177215,place,hamlet,regular
+154183021,ele,246,regular
+154183021,gnis:Class,Populated Place,regular
+154183021,gnis:County,Fairfield,regular
+154183021,gnis:County_num,045,regular
+154183021,gnis:ST_alpha,OH,regular
+154183021,gnis:ST_num,39,regular
+154183021,id,1065017,gnis
+154183021,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154183021,is_in,"Fairfield,Ohio,Ohio,OH,USA",regular
+154183021,name,Lockville,regular
+154183021,place,hamlet,regular
+154183021,wikidata,Q22133916,regular
+154187424,population,865;2006,census
+154187424,ele,256,regular
+154187424,gnis:Class,Populated Place,regular
+154187424,gnis:County,Franklin,regular
+154187424,gnis:County_num,049,regular
+154187424,gnis:ST_alpha,OH,regular
+154187424,gnis:ST_num,39,regular
+154187424,id,1049263,gnis
+154187424,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154187424,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154187424,name,Urbancrest,regular
+154187424,place,village,regular
+154187424,population,865,regular
+154190541,ele,269,regular
+154190541,gnis:Class,Populated Place,regular
+154190541,gnis:County,Franklin,regular
+154190541,gnis:County_num,049,regular
+154190541,gnis:ST_alpha,OH,regular
+154190541,gnis:ST_num,39,regular
+154190541,id,1064712,gnis
+154190541,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154190541,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154190541,name,Georgesville,regular
+154190541,place,hamlet,regular
+154190541,wikidata,Q5546929,regular
+154196553,population,2937;2006,census
+154196553,ele,263,regular
+154196553,gnis:Class,Populated Place,regular
+154196553,gnis:County,Fairfield,regular
+154196553,gnis:County_num,045,regular
+154196553,gnis:ST_alpha,OH,regular
+154196553,gnis:ST_num,39,regular
+154196553,id,1064378,gnis
+154196553,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154196553,is_in,"Fairfield,Ohio,Ohio,OH,USA",regular
+154196553,name,Baltimore,regular
+154196553,place,village,regular
+154196553,population,2937,regular
+154196553,wikidata,Q5092,regular
+154196553,wikipedia,"en:Baltimore, Ohio",regular
+154196976,ele,234,regular
+154196976,gnis:Class,Populated Place,regular
+154196976,gnis:County,Franklin,regular
+154196976,gnis:County_num,049,regular
+154196976,gnis:ST_alpha,OH,regular
+154196976,gnis:ST_num,39,regular
+154196976,id,1730742,gnis
+154196976,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154196976,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154196976,name,Kramers Addition,regular
+154196976,place,hamlet,regular
+154198210,ele,298,regular
+154198210,gnis:Class,Populated Place,regular
+154198210,gnis:County,Madison,regular
+154198210,gnis:County_num,097,regular
+154198210,gnis:ST_alpha,OH,regular
+154198210,gnis:ST_num,39,regular
+154198210,id,1048783,gnis
+154198210,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154198210,is_in,"Madison,Ohio,Ohio,OH,USA",regular
+154198210,name,Gillivan,regular
+154198210,place,hamlet,regular
+154198210,wikidata,Q5562389,regular
+154199625,ele,304,regular
+154199625,gnis:Class,Populated Place,regular
+154199625,gnis:County,Union,regular
+154199625,gnis:County_num,159,regular
+154199625,gnis:ST_alpha,OH,regular
+154199625,gnis:ST_num,39,regular
+154199625,id,1043828,gnis
+154199625,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154199625,is_in,"Union,Ohio,Ohio,OH,USA",regular
+154199625,name,New California,regular
+154199625,place,hamlet,regular
+154199625,wikidata,Q7006317,regular
+154200567,ele,261,regular
+154200567,gnis:Class,Populated Place,regular
+154200567,gnis:County,Franklin,regular
+154200567,gnis:County_num,049,regular
+154200567,gnis:ST_alpha,OH,regular
+154200567,gnis:ST_num,39,regular
+154200567,id,1056425,gnis
+154200567,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154200567,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154200567,name,Mifflinville,regular
+154200567,place,hamlet,regular
+154201987,ele,299,regular
+154201987,gnis:Class,Populated Place,regular
+154201987,gnis:County,Madison,regular
+154201987,gnis:County_num,097,regular
+154201987,gnis:ST_alpha,OH,regular
+154201987,gnis:ST_num,39,regular
+154201987,id,1070912,gnis
+154201987,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154201987,is_in,"Madison,Ohio,Ohio,OH,USA",regular
+154201987,name,Resaca,regular
+154201987,place,hamlet,regular
+154201987,wikidata,Q7314916,regular
+154204592,ele,266,regular
+154204592,gnis:Class,Populated Place,regular
+154204592,gnis:County,Franklin,regular
+154204592,gnis:County_num,049,regular
+154204592,gnis:ST_alpha,OH,regular
+154204592,gnis:ST_num,39,regular
+154204592,id,1806779,gnis
+154204592,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154204592,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154204592,name,Moores Corners,regular
+154204592,place,hamlet,regular
+154205975,ele,233,regular
+154205975,gnis:Class,Populated Place,regular
+154205975,gnis:County,Franklin,regular
+154205975,gnis:County_num,049,regular
+154205975,gnis:ST_alpha,OH,regular
+154205975,gnis:ST_num,39,regular
+154205975,id,1730740,gnis
+154205975,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154205975,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154205975,name,Beckley Addition,regular
+154205975,place,hamlet,regular
+154206372,ele,282,regular
+154206372,gnis:Class,Populated Place,regular
+154206372,gnis:County,Franklin,regular
+154206372,gnis:County_num,049,regular
+154206372,gnis:ST_alpha,OH,regular
+154206372,gnis:ST_num,39,regular
+154206372,id,1040526,gnis
+154206372,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154206372,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154206372,name,Flint,regular
+154206372,place,hamlet,regular
+154206372,wikidata,Q5459464,regular
+154207298,ele,246,regular
+154207298,gnis:Class,Populated Place,regular
+154207298,gnis:County,Franklin,regular
+154207298,gnis:County_num,049,regular
+154207298,gnis:ST_alpha,OH,regular
+154207298,gnis:ST_num,39,regular
+154207298,id,1083970,gnis
+154207298,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154207298,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154207298,name,Blendon Corner,regular
+154207298,place,hamlet,regular
+154207462,ele,237,regular
+154207462,gnis:Class,Populated Place,regular
+154207462,gnis:County,Franklin,regular
+154207462,gnis:County_num,049,regular
+154207462,gnis:ST_alpha,OH,regular
+154207462,gnis:ST_num,39,regular
+154207462,id,1049296,gnis
+154207462,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154207462,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154207462,name,Waterloo,regular
+154207462,place,hamlet,regular
+154207644,population,79;2006,census
+154207644,ele,239,regular
+154207644,gnis:Class,Populated Place,regular
+154207644,gnis:County,Franklin,regular
+154207644,gnis:County_num,049,regular
+154207644,gnis:ST_alpha,OH,regular
+154207644,gnis:ST_num,39,regular
+154207644,id,1048548,gnis
+154207644,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154207644,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154207644,name,Brice,regular
+154207644,place,hamlet,regular
+154207644,population,79,regular
+154213051,ele,268,regular
+154213051,gnis:Class,Populated Place,regular
+154213051,gnis:County,Franklin,regular
+154213051,gnis:County_num,049,regular
+154213051,gnis:ST_alpha,OH,regular
+154213051,gnis:ST_num,39,regular
+154213051,id,1061597,gnis
+154213051,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154213051,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154213051,name,Reynoldsburg,regular
+154213051,place,town,regular
+154213051,wikidata,Q1007924,regular
+154213051,wikipedia,"en:Reynoldsburg, Ohio",regular
+154213211,population,551;2006,census
+154213211,ele,272,regular
+154213211,gnis:Class,Populated Place,regular
+154213211,gnis:County,Delaware,regular
+154213211,gnis:County_num,041,regular
+154213211,gnis:ST_alpha,OH,regular
+154213211,gnis:ST_num,39,regular
+154213211,id,1061202,gnis
+154213211,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154213211,is_in,"Delaware,Ohio,Ohio,OH,USA",regular
+154213211,name,Shawnee Hills,regular
+154213211,place,village,regular
+154213211,population,551,regular
+154282858,ele,329,regular
+154282858,gnis:Class,Populated Place,regular
+154282858,gnis:County,Licking,regular
+154282858,gnis:County_num,089,regular
+154282858,gnis:ST_alpha,OH,regular
+154282858,gnis:ST_num,39,regular
+154282858,id,1061367,gnis
+154282858,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154282858,is_in,"Licking,Ohio,Ohio,OH,USA",regular
+154282858,name,Goddard Corners,regular
+154282858,place,hamlet,regular
+154289338,ele,327,regular
+154289338,gnis:Class,Populated Place,regular
+154289338,gnis:County,Licking,regular
+154289338,gnis:County_num,089,regular
+154289338,gnis:ST_alpha,OH,regular
+154289338,gnis:ST_num,39,regular
+154289338,id,1083525,gnis
+154289338,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154289338,is_in,"Licking,Ohio,Ohio,OH,USA",regular
+154289338,name,Happy Homes,regular
+154289338,place,hamlet,regular
+154289685,ele,374,regular
+154289685,gnis:Class,Populated Place,regular
+154289685,gnis:County,Licking,regular
+154289685,gnis:County_num,089,regular
+154289685,gnis:ST_alpha,OH,regular
+154289685,gnis:ST_num,39,regular
+154289685,id,1062635,gnis
+154289685,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154289685,is_in,"Licking,Ohio,Ohio,OH,USA",regular
+154289685,name,Ash,regular
+154289685,place,hamlet,regular
+154289935,ele,235,regular
+154289935,gnis:Class,Populated Place,regular
+154289935,gnis:County,Franklin,regular
+154289935,gnis:County_num,049,regular
+154289935,gnis:ST_alpha,OH,regular
+154289935,gnis:ST_num,39,regular
+154289935,id,1730743,gnis
+154289935,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154289935,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154289935,name,Lombardy Heights,regular
+154289935,place,hamlet,regular
+154290219,ele,246,regular
+154290219,gnis:County,Franklin,regular
+154290219,gnis:County_num,049,regular
+154290219,gnis:ST_alpha,OH,regular
+154290219,gnis:ST_num,39,regular
+154290219,id,1059826,gnis
+154290219,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154290219,name,East Columbus,regular
+154290219,place,hamlet,regular
+154290219,wikidata,Q5328161,regular
+154291480,ele,297,regular
+154291480,gnis:Class,Populated Place,regular
+154291480,gnis:County,Franklin,regular
+154291480,gnis:County_num,049,regular
+154291480,gnis:ST_alpha,OH,regular
+154291480,gnis:ST_num,39,regular
+154291480,id,1041401,gnis
+154291480,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154291480,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154291480,name,Havens Corners,regular
+154291480,place,hamlet,regular
+154298999,ele,292,regular
+154298999,gnis:County,Union,regular
+154298999,gnis:County_num,159,regular
+154298999,gnis:ST_alpha,OH,regular
+154298999,gnis:ST_num,39,regular
+154298999,id,1037487,gnis
+154298999,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154298999,name,Arnold,regular
+154298999,place,hamlet,regular
+154298999,wikidata,Q4794919,regular
+154299071,ele,277,regular
+154299071,gnis:Class,Populated Place,regular
+154299071,gnis:County,Franklin,regular
+154299071,gnis:County_num,049,regular
+154299071,gnis:ST_alpha,OH,regular
+154299071,gnis:ST_num,39,regular
+154299071,id,1048456,gnis
+154299071,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154299071,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154299071,name,Alton,regular
+154299071,place,hamlet,regular
+154306359,ele,251,regular
+154306359,gnis:Class,Populated Place,regular
+154306359,gnis:County,Franklin,regular
+154306359,gnis:County_num,049,regular
+154306359,gnis:ST_alpha,OH,regular
+154306359,gnis:ST_num,39,regular
+154306359,id,1806775,gnis
+154306359,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154306359,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154306359,name,East Linden,regular
+154306359,place,hamlet,regular
+154307916,ele,287,regular
+154307916,gnis:Class,Populated Place,regular
+154307916,gnis:County,Franklin,regular
+154307916,gnis:County_num,049,regular
+154307916,gnis:ST_alpha,OH,regular
+154307916,gnis:ST_num,39,regular
+154307916,id,1042403,gnis
+154307916,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154307916,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154307916,name,Lamb Corners,regular
+154307916,place,hamlet,regular
+154312850,ele,248,regular
+154312850,gnis:Class,Populated Place,regular
+154312850,gnis:County,Franklin,regular
+154312850,gnis:County_num,049,regular
+154312850,gnis:ST_alpha,OH,regular
+154312850,gnis:ST_num,39,regular
+154312850,id,1806776,gnis
+154312850,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154312850,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154312850,name,Eastcleft,regular
+154312850,place,hamlet,regular
+154313634,ele,279,regular
+154313634,gnis:Class,Populated Place,regular
+154313634,gnis:County,Madison,regular
+154313634,gnis:County_num,097,regular
+154313634,gnis:ST_alpha,OH,regular
+154313634,gnis:ST_num,39,regular
+154313634,id,1077516,gnis
+154313634,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154313634,is_in,"Madison,Ohio,Ohio,OH,USA",regular
+154313634,name,Amity,regular
+154313634,place,hamlet,regular
+154313634,wikidata,Q4746952,regular
+154317064,population,6209;2006,census
+154317064,ele,236,regular
+154317064,gnis:Class,Populated Place,regular
+154317064,gnis:County,Franklin,regular
+154317064,gnis:County_num,049,regular
+154317064,gnis:ST_alpha,OH,regular
+154317064,gnis:ST_num,39,regular
+154317064,id,1048799,gnis
+154317064,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154317064,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154317064,name,Grandview Heights,regular
+154317064,place,village,regular
+154317064,population,6209,regular
+154318154,population,252;2006,census
+154318154,ele,296,regular
+154318154,gnis:Class,Populated Place,regular
+154318154,gnis:County,Licking,regular
+154318154,gnis:County_num,089,regular
+154318154,gnis:ST_alpha,OH,regular
+154318154,gnis:ST_num,39,regular
+154318154,id,1064308,gnis
+154318154,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154318154,is_in,"Licking,Ohio,Ohio,OH,USA",regular
+154318154,name,Alexandria,regular
+154318154,place,village,regular
+154318154,population,252,regular
+154319910,ele,260,regular
+154319910,gnis:Class,Populated Place,regular
+154319910,gnis:County,Fairfield,regular
+154319910,gnis:County_num,045,regular
+154319910,gnis:ST_alpha,OH,regular
+154319910,gnis:ST_num,39,regular
+154319910,id,1048871,gnis
+154319910,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154319910,is_in,"Fairfield,Ohio,Ohio,OH,USA",regular
+154319910,name,Jefferson,regular
+154319910,place,hamlet,regular
+154322344,ele,290,regular
+154322344,gnis:Class,Populated Place,regular
+154322344,gnis:County,Franklin,regular
+154322344,gnis:County_num,049,regular
+154322344,gnis:ST_alpha,OH,regular
+154322344,gnis:ST_num,39,regular
+154322344,id,1049348,gnis
+154322344,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154322344,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154322344,name,Wrightville,regular
+154322344,place,hamlet,regular
+154323650,ele,326,regular
+154323650,gnis:Class,Populated Place,regular
+154323650,gnis:County,Licking,regular
+154323650,gnis:County_num,089,regular
+154323650,gnis:ST_alpha,OH,regular
+154323650,gnis:ST_num,39,regular
+154323650,id,1061158,gnis
+154323650,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154323650,is_in,"Licking,Ohio,Ohio,OH,USA",regular
+154323650,name,Moreland Corners,regular
+154323650,place,hamlet,regular
+154326859,ele,281,regular
+154326859,gnis:Class,Populated Place,regular
+154326859,gnis:County,Franklin,regular
+154326859,gnis:County_num,049,regular
+154326859,gnis:ST_alpha,OH,regular
+154326859,gnis:ST_num,39,regular
+154326859,id,1049154,gnis
+154326859,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154326859,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154326859,name,Sandy Corners,regular
+154326859,place,hamlet,regular
+154338531,ele,229,regular
+154338531,gnis:Class,Populated Place,regular
+154338531,gnis:County,Franklin,regular
+154338531,gnis:County_num,049,regular
+154338531,gnis:ST_alpha,OH,regular
+154338531,gnis:ST_num,39,regular
+154338531,id,1867447,gnis
+154338531,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154338531,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154338531,name,Blacklick Estates,regular
+154338531,place,hamlet,regular
+154344687,ele,295,regular
+154344687,gnis:Class,Populated Place,regular
+154344687,gnis:County,Union,regular
+154344687,gnis:County_num,159,regular
+154344687,gnis:ST_alpha,OH,regular
+154344687,gnis:ST_num,39,regular
+154344687,id,1062661,gnis
+154344687,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154344687,is_in,"Union,Ohio,Ohio,OH,USA",regular
+154344687,name,Bridgeport,regular
+154344687,place,hamlet,regular
+154344687,wikidata,Q4966567,regular
+154347385,ele,277,regular
+154347385,gnis:Class,Populated Place,regular
+154347385,gnis:County,Delaware,regular
+154347385,gnis:County_num,041,regular
+154347385,gnis:ST_alpha,OH,regular
+154347385,gnis:ST_num,39,regular
+154347385,id,1057822,gnis
+154347385,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154347385,is_in,"Delaware,Ohio,Ohio,OH,USA",regular
+154347385,name,Maxtown,regular
+154347385,place,hamlet,regular
+154348247,ele,227,regular
+154348247,gnis:Class,Populated Place,regular
+154348247,gnis:County,Franklin,regular
+154348247,gnis:County_num,049,regular
+154348247,gnis:ST_alpha,OH,regular
+154348247,gnis:ST_num,39,regular
+154348247,id,1048693,gnis
+154348247,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154348247,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154348247,name,Edgewater Park,regular
+154348247,place,hamlet,regular
+154350988,population,4926;2006,census
+154350988,ele,226,regular
+154350988,gnis:Class,Populated Place,regular
+154350988,gnis:County,Franklin,regular
+154350988,gnis:County_num,049,regular
+154350988,gnis:ST_alpha,OH,regular
+154350988,gnis:ST_num,39,regular
+154350988,id,1062797,gnis
+154350988,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154350988,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154350988,name,Groveport,regular
+154350988,place,village,regular
+154350988,population,4926,regular
+154350988,wikidata,Q1025986,regular
+154350988,wikipedia,"en:Groveport, Ohio",regular
+154354488,ele,287,regular
+154354488,gnis:Class,Populated Place,regular
+154354488,gnis:County,Franklin,regular
+154354488,gnis:County_num,049,regular
+154354488,gnis:ST_alpha,OH,regular
+154354488,gnis:ST_num,39,regular
+154354488,id,1064322,gnis
+154354488,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154354488,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154354488,name,Amlin,regular
+154354488,place,hamlet,regular
+154354488,website,https://www.facebook.com/AmlinOhio43002/,regular
+154354488,wikidata,Q4747073,regular
+154354488,wikipedia,"en:Amlin, Ohio",regular
+154356551,alt_name,West Jeff,regular
+154356551,population,4272;2006,census
+154356551,ele,277,regular
+154356551,gnis:Class,Populated Place,regular
+154356551,gnis:County,Madison,regular
+154356551,gnis:County_num,097,regular
+154356551,gnis:ST_alpha,OH,regular
+154356551,gnis:ST_num,39,regular
+154356551,id,1085494,gnis
+154356551,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154356551,is_in,"Madison,Ohio,Ohio,OH,USA",regular
+154356551,loc_name,West Jeff,regular
+154356551,name,West Jefferson,regular
+154356551,place,village,regular
+154356551,population,4272,regular
+154356551,short_name,W Jefferson,regular
+154356551,shortest_name,W Jeff,regular
+154357697,ele,235,regular
+154357697,gnis:County,Franklin,regular
+154357697,gnis:County_num,049,regular
+154357697,gnis:ST_alpha,OH,regular
+154357697,gnis:ST_num,39,regular
+154357697,id,1048814,gnis
+154357697,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154357697,name,Hanford,regular
+154357697,place,hamlet,regular
+154367965,ele,303,regular
+154367965,gnis:Class,Populated Place,regular
+154367965,gnis:County,Fairfield,regular
+154367965,gnis:County_num,045,regular
+154367965,gnis:ST_alpha,OH,regular
+154367965,gnis:ST_num,39,regular
+154367965,id,1806801,gnis
+154367965,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154367965,is_in,"Fairfield,Ohio,Ohio,OH,USA",regular
+154367965,name,Chevington Woods North,regular
+154367965,place,hamlet,regular
+154373357,ele,319,regular
+154373357,gnis:Class,Populated Place,regular
+154373357,gnis:County,Licking,regular
+154373357,gnis:County_num,089,regular
+154373357,gnis:ST_alpha,OH,regular
+154373357,gnis:ST_num,39,regular
+154373357,id,1061365,gnis
+154373357,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154373357,is_in,"Licking,Ohio,Ohio,OH,USA",regular
+154373357,name,Fursville,regular
+154373357,place,hamlet,regular
+154374497,ele,269,regular
+154374497,gnis:Class,Populated Place,regular
+154374497,gnis:County,Franklin,regular
+154374497,gnis:County_num,049,regular
+154374497,gnis:ST_alpha,OH,regular
+154374497,gnis:ST_num,39,regular
+154374497,id,1049089,gnis
+154374497,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154374497,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154374497,name,Pleasant Corners,regular
+154374497,place,hamlet,regular
+154374706,population,31326;2006,census
+154374706,ele,247,regular
+154374706,gnis:Class,Populated Place,regular
+154374706,gnis:County,Franklin,regular
+154374706,gnis:County_num,049,regular
+154374706,gnis:ST_alpha,OH,regular
+154374706,gnis:ST_num,39,regular
+154374706,id,1075125,gnis
+154374706,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154374706,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154374706,name,Upper Arlington,regular
+154374706,place,town,regular
+154374706,population,31326,regular
+154374706,wikidata,Q1924921,regular
+154374706,wikipedia,"en:Upper Arlington, Ohio",regular
+154391124,ele,230,regular
+154391124,gnis:Class,Populated Place,regular
+154391124,gnis:County,Franklin,regular
+154391124,gnis:County_num,049,regular
+154391124,gnis:ST_alpha,OH,regular
+154391124,gnis:ST_num,39,regular
+154391124,id,1061810,gnis
+154391124,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154391124,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154391124,name,Zimmer,regular
+154391124,place,hamlet,regular
+154396913,population,26812;2006,census
+154396913,ele,285,regular
+154396913,gnis:Class,Populated Place,regular
+154396913,gnis:County,Franklin,regular
+154396913,gnis:County_num,049,regular
+154396913,gnis:ST_alpha,OH,regular
+154396913,gnis:ST_num,39,regular
+154396913,id,1056881,gnis
+154396913,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154396913,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154396913,name,Hilliard,regular
+154396913,place,town,regular
+154396913,population,26812,regular
+154396913,wikidata,Q630874,regular
+154396913,wikipedia,"en:Hilliard, Ohio",regular
+154396935,population,17894;2006,census
+154396935,ele,242,regular
+154396935,gnis:Class,Populated Place,regular
+154396935,gnis:County,Franklin,regular
+154396935,gnis:County_num,049,regular
+154396935,gnis:ST_alpha,OH,regular
+154396935,gnis:ST_num,39,regular
+154396935,id,1049324,gnis
+154396935,import_uuid,bb7269ee-502a-5391-8056-e3ce0e66489c,regular
+154396935,is_in,"Franklin,Ohio,Ohio,OH,USA",regular
+154396935,name,Whitehall,regular
+154396935,place,town,regular
+154396935,population,17894,regular
+154396935,wikidata,Q2089711,regular
+197257361,highway,turning_circle,regular
+197257608,highway,turning_circle,regular
+197258002,highway,turning_circle,regular
+197259121,power,tower,regular
+197259127,power,tower,regular
+197259129,power,tower,regular
+197259131,power,tower,regular
+197259133,power,tower,regular
+197259135,power,tower,regular
+197259137,power,tower,regular
+197259141,power,tower,regular
+197259143,power,tower,regular
+197259145,power,tower,regular
+197259151,power,tower,regular
+197259155,power,tower,regular
+197262924,power,tower,regular
+197263029,power,tower,regular
+197263031,power,tower,regular
+197263033,power,tower,regular
+197263061,power,tower,regular
+197273502,highway,turning_circle,regular
+197273945,highway,turning_circle,regular
+197274569,highway,turning_circle,regular
+197274684,railway,level_crossing,regular
+197274684,source,bing,regular
+197275484,highway,turning_circle,regular
+197275803,highway,turning_circle,regular
+197276042,railway,level_crossing,regular
+197276064,highway,turning_circle,regular
+197277227,highway,traffic_signals,regular
+197277826,highway,turning_loop,regular
+197278180,highway,turning_circle,regular
+197278847,highway,turning_circle,regular
+197278905,highway,turning_circle,regular
+197278993,highway,turning_circle,regular
+197279128,highway,turning_circle,regular
+197279401,highway,turning_circle,regular
+197279635,highway,turning_circle,regular
+197279734,highway,turning_circle,regular
+197279773,highway,turning_circle,regular
+197279808,highway,turning_circle,regular
+197280139,highway,turning_circle,regular
+197280407,highway,turning_circle,regular
+197280410,highway,turning_circle,regular
+197280458,highway,turning_circle,regular
+197281383,highway,turning_circle,regular
+197281563,highway,turning_circle,regular
+197281650,highway,turning_circle,regular
+197281752,highway,turning_circle,regular
+197281782,highway,turning_circle,regular
+197281786,highway,turning_circle,regular
+197282045,highway,turning_circle,regular
+197282097,highway,turning_circle,regular
+197283619,highway,turning_circle,regular
+197283644,highway,turning_circle,regular
+197283661,highway,turning_circle,regular
+197283814,highway,turning_circle,regular
+197283927,highway,turning_circle,regular
+197283955,highway,turning_circle,regular
+197284753,highway,turning_circle,regular
+197284876,highway,turning_circle,regular
+197284877,highway,turning_circle,regular
+197284885,highway,turning_circle,regular
+197285758,highway,turning_circle,regular
+197286793,highway,turning_circle,regular
+197287085,highway,turning_circle,regular
+197288044,highway,turning_circle,regular
+197288861,highway,turning_circle,regular
+197289430,highway,turning_circle,regular
+197289530,highway,turning_circle,regular
+197290277,highway,turning_circle,regular
+197291016,highway,turning_circle,regular
+197291570,highway,turning_circle,regular
+197291575,highway,turning_circle,regular
+197291613,highway,turning_circle,regular
+197291751,highway,turning_circle,regular
+197291874,highway,turning_circle,regular
+197291961,highway,turning_circle,regular
+197291984,highway,turning_circle,regular
+197292129,highway,turning_circle,regular
+197292592,highway,turning_circle,regular
+197293169,highway,turning_circle,regular
+197293198,highway,turning_circle,regular
+197293306,highway,turning_circle,regular
+197293336,highway,turning_circle,
