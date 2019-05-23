@@ -2,10 +2,10 @@
 
 **Author:** Jaks Wildman
 
-**Map Area**: I selected Columbus, Ohio, USA as it is the city I've spent the most time in.
+**Map Area**: I selected Columbus, Ohio, USA as it is the city I've spent the most time in. Familiarity makes things more fun and interesting.
 
 * Location: Columbus, Ohio
-* [OpenStreetMap URL] (https://www.openstreetmap.org/export#map=11/39.9832/-82.9907)
+* [OpenStreetMap URL](https://www.openstreetmap.org/export#map=11/39.9832/-82.9907)
 
 ## Data Audit
 ---
