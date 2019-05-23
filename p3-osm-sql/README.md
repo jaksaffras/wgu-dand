@@ -60,58 +60,34 @@ sqlite> SELECT COUNT(*) FROM NODES
 ```
 **Output:** `1502751`
 
-**A list of all the types from nodes_tags and their respective counts:**
+**A Count by type of the top 15 Node Tags**
 ``` python
-sqlite> SELECT DISTINCT TYPE, COUNT(ID) as TYPE_COUNT FROM NODES_TAGS GROUP BY TYPE ORDER BY TYPE_COUNT DESC ;
+sqlite> SELECT DISTINCT TYPE, COUNT(ID) as TYPE_COUNT
+ FROM NODES_TAGS
+ GROUP BY TYPE
+ ORDER BY TYPE_COUNT DESC
+ LIMIT 15 ;
 ```
+
 **Output:**
 ```python
-regular|76620
-addr|7879
-gnis|4409
-species|1396
-fire_hydrant|572
-traffic_signals|404
-brand|340
-contact|121
-payment|79
-tower|77
-name|50
-xmas|46
-historic|42
-service|39
-surveillance|38
-census|35
-recycling|33
-fuel|30
-genus|28
-source|23
-destination|22
-seamark|22
-diet|17
-ref|14
-toilets|10
-communication|9
-generator|6
-internet_access|6
-building|5
-defibrillator|5
-healthcare|4
-amenity|3
-dance|3
-note|3
-disused|2
-is_in|2
-operator|2
-wetap|2
-abandoned|1
-maxspeed|1
-opening_hours|1
-openplaques|1
-population|1
-wheelchair|1
+regular         | 76620
+addr            | 7879
+gnis            | 4409
+species         | 1396
+fire_hydrant    | 572
+traffic_signals | 404
+brand           | 340
+contact         | 121
+payment         | 79
+tower           | 77
+name            | 50
+xmas            | 46
+historic        | 42
+service         | 39
+surveillance    | 38
 ```
-** Number of Unique users:**
+**Number of Unique users:**
 ```python
 sqlite> select COUNT(DISTINCT(u.uid)) FROM (SELECT uid FROM nodes UNION all select uid from ways) u;
 ```
