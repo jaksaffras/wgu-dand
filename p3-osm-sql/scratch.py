@@ -1,3 +1,5 @@
+# holds my pieces as I move them around
+
 def print_sorted_dict(d):
     keys = d.keys()
     keys = sorted(keys, key=lambda s: s.lower())
