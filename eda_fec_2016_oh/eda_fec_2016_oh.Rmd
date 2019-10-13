@@ -1,0 +1,1164 @@
+---
+title: "EDA - Ohio 2016 Presidential FEC Contributions"
+author: "Jaks Wildman"
+output:
+  html_document: null
+
+---
+
+# Introduction
+
+This is an Exploratory Data Analysis of the individual contributions made to 
+2016 Presidential Candidates from the state of Ohio. Ohio is known for being a 
+battleground state, and I expect it will provide some interesting insight. 
+Additionally, it is the state I most closely relate to as my home state.
+
+Within this analysis, we will seek to answer some general questions: 
+
+> 1. What is the total amount of contributions?
+ 2. Which candiate had the highest contributions?
+ 3. How do the contributions differ between the Primary & General Elections?
+ 4. What is the geographic distribution of the contributions across the state?
+ 5. Is there an identifiable pattern to the contribution dates as related to
+  important dates during the campaign? 
+
+
+The data source can be found here: [FEC Contributions to All Candidates](https://classic.fec.gov/disclosurep/pnational.do)
+
+
+## Univariate Section
+
+Before we can dive into making plots and answering questions, we first need to
+get an overall feel for the data.
+
+```{r load packages, message=FALSE, warning=FALSE, include=FALSE}
+# Load all of the packages
+
+library(readr)
+library(dplyr)
+library(lubridate)
+library(scales)
+library(ggmap)
+library(ggplot2)
+library(ggrepel)
+library(gridExtra)
+library(zipcode)
+library(maps)
+library(mapdata)
+
+
+```
+
+```{r load files, include=FALSE}
+# Load the Data
+fec <- read.csv('P00000001-OH.csv', stringsAsFactors = F)
+fec <- select(fec, 1:18)
+zip_county <- read_csv("zip_codes.csv", 
+    col_types = cols(zip_code = col_character()))
+
+pop_oh_county <- read_csv("pop_oh_county.csv", 
+    col_types = cols(Population = col_integer()))
+       
+data("zipcode")
+zipcode <- filter(zipcode,state == 'OH')
+
+
+
+```
+
+
+
+There are 167,259 rows, and 18 columns. The only quantitative varible within 
+the set is contb_receipt_amt, all others are categorical.
+
+Of note, the contb_receipt_dt column is not formatted as a date data type, there 
+is no party affiliation and no marker for whether a candiate went on to become 
+the nominee. We will add those in shortly.
+
+Important variables:
+
+- cand_nm : The candidate's name.
+- contb_receipt_amt: The amount of the contribution.
+- contb_receipt_dt: The date of the contribution.
+- election_tp: The election type as G2016, P2016, or Unspecified.
+- contbr_zip: The zip code of the contributor. Based on the head, this will need
+  cleaned down to a set of 5.
+- contbr_occupation: As filled out by the contributor, their current occupation.
+
+
+
+```{r structure fec, echo=FALSE, warning=FALSE}
+# Describe the data
+
+str(fec)
+```
+
+
+
+There are 24 distinct candidates within this data set.
+```{r num of candidates, echo=FALSE}
+length(unique(fec$cand_nm))
+```
+
+
+The contb_receipt_amt value has some outliers, which we'll use the federal contribution rules to normalize.
+
+Contribution rules to Candidate Committees by individuals:
+
+- An individual may contribute up to $2,700 per election, per candidate.
+- The Primary & General Elections are seen as separate elections
+
+_Source: [FEC | Contribution limits for 2015-2016](https://www.fec.gov/updates/contribution-limits-for-2015-2016/)_
+
+To do so, we'll need to group by election type, candidate then contributor name before removing the extra contributions
+
+```{r fec party variables, message=FALSE, warning=FALSE, include=FALSE}
+# Add a column to denote Party Affiliation. 
+
+fec$party <- ifelse(fec$cand_nm %in% c("Clinton, Hillary Rodham",
+                                       "O'Malley, Martin Joseph",
+                                       "Sanders, Bernard",
+                                       "Webb, James Henry Jr.",
+                                       "Lessig, Lawrence"),
+                    "Democrat","Republican")
+
+
+fec$party[fec$cand_nm %in% c("McMullin, Evan", 
+                           "Johnson, Gary", 
+                           "Stein, Jill")]  <- "Other"
+
+fec$party_granular <- ifelse(fec$cand_nm %in% c("Clinton, Hillary Rodham",
+                                       "O'Malley, Martin Joseph",
+                                       "Sanders, Bernard",
+                                       "Webb, James Henry Jr.",
+                                       "Lessig, Lawrence"),
+                    "Democrat","Republican")
+
+
+fec$party_granular[fec$cand_nm %in% c("Stein, Jill")] <- "Green"
+fec$party_granular[fec$cand_nm %in% c("Johnson, Gary")] <- "Libertarian"
+fec$party_granular[fec$cand_nm %in% c("McMullin, Evan")] <- "Independent"
+
+              
+
+# Set party colors variable, plot overall distribution
+party_colors <- c("Democrat" = "#1404BD", 
+                    "Republican" = "#C40303", 
+                  "Other" = "#9208BA",
+                  "Independent" = "#9208BA",
+                  "Green" = "#00A95C",
+                  "Libertarian" = "#FED105")
+
+
+#Add a column to mark which candidates went on to the General Election
+
+fec$nominee <- ifelse(fec$cand_nm %in% c("Clinton, Hillary Rodham",
+                                         "Trump, Donald J.",
+                                         "Johnson, Gary",
+                                         "Stein, Jill",
+                                         "McMullin, Evan"),
+                      TRUE,FALSE)
+
+# Add a column to group the type of election
+
+
+fec <- fec %>%
+  mutate(electionType = ifelse(election_tp == "G2016", 
+                               c("General Election"),
+                              ifelse(election_tp == "P2016", 
+                                     c("Primary Election"),
+                                     c(NA))))
+
+fec$electionType[is.na(fec$electionType)] = "Unspecified"
+```
+
+
+```{r contributions grouping, echo=FALSE}
+summary(fec$contb_receipt_amt)
+
+
+
+contributions_group <- fec %>%
+  group_by(election_tp,cand_nm,contbr_nm) %>%
+  mutate(sum = sum(contb_receipt_amt))
+
+```
+
+After grouping, we are still left with some outliers
+
+```{r summary contributions, echo=FALSE}
+summary(contributions_group$sum)
+```
+
+After removing the outliers, we get a mean of $122.26 and a Median of $30.00. Indicating that the while the average is 122, the common donated value is $30.
+
+
+```{r amount of contributions, echo=FALSE}
+
+fec <- contributions_group %>%
+  filter(contb_receipt_amt > 0 & contb_receipt_amt <= 2700) %>%
+  ungroup()
+  
+summary(fec$contb_receipt_amt)
+
+```
+
+Looking at the overall distribution, a simple histogram shows a reasonable amout of spread, though it's positively skewed towards the lower donation amounts which follows logically from the data summary.
+
+```{r plot contribution amount, echo=FALSE}
+ggplot(fec, aes(x = contb_receipt_amt)) +
+  geom_histogram(binwidth = 50      )
+```
+
+Chopping up the contribution amounts into smaller buckets will give us a better overall sense of the contributions.
+
+I'm choosing $0-15,$15-30,$30-45,$45-60,$60-100, $100-200, $50-1000 and $1000-2700.
+
+As we would expect, the marjority of people are making smaller donations. After 100 the number sharply falls off until getting into the larger ranges of 200-500.
+
+```{r contrib buckets, echo=FALSE}
+
+buckets <- cut(contributions_group$contb_receipt_amt,
+               breaks = c(0,15,30,45,60,100,200,500,1000,2700))
+
+
+table(buckets)
+```
+
+
+
+Now, looking into the contribution frequency by donor we can see that the vast majority of donors only contributied once as evidenced by this long tailed plot
+
+
+```{r contrib frequency plot, echo=FALSE}
+
+cont_freq <- fec %>%
+  group_by(contbr_nm) %>%
+  tally()
+
+
+qplot(x = n,data = cont_freq, binwidth = 1) +
+  scale_x_continuous(limits = c(0,25), breaks = seq(0,25,1)) +
+  xlab("Number of Contributions") +
+  ylab("Count of Donors") + 
+  theme_gray() +
+  theme(axis.line = element_line(size = 1, colour = "black"),
+        text = element_text(size = 9),
+        plot.title = element_text(size = 14, face = "bold"))
+
+```
+
+
+Next, reviewing the contribution frequency by occupation, we can see that Retirees are the most common donor far beyond any other group
+
+```{r occupation freq, echo=FALSE}
+job_freq <- fec %>%
+  group_by(contbr_occupation) %>%
+  tally()
+
+head(job_freq[order(-job_freq$n),],n=25)
+```
+
+
+
+
+Next, I want to look into the distribution based upon zip Code.
+
+```{r zipcode variables and freq plot, include=FALSE}
+# Clean up the zips
+fec$contbr_zip <- clean.zipcodes(fec$contbr_zip)
+fec$contbr_zip <- substr(fec$contbr_zip,1,5)
+
+
+# zip is the data set from data(zipcode). This gives the latitude and longitude by zip code which will feed the map later on. Population is a secondary dataset with population by county.
+
+
+zip_county <- zipcode %>%
+  inner_join(zip_county,by = c("zip" = "zip_code")) %>%
+  arrange(county) %>%
+  inner_join(pop_oh_county, c("county" = "County")) %>%
+  rename("county_pop" = "Population") %>%
+  rename("pop_rank" = "Rank")%>%
+  select(zip, city.x,state,latitude,longitude,county,pop_rank, county_pop) %>%
+  rename(city = city.x)
+
+
+# add zip_county back in as an inner_join based on xip to exclude invalid Ohio Zip codes.
+fec <- fec %>%
+  inner_join(zip_county, by = c("contbr_zip" = "zip"))
+ 
+
+
+zip_freq <- fec %>%
+  group_by(contbr_zip) %>%
+  tally()
+
+
+
+
+
+```
+
+There are 1,108 valid unique Ohio Zipcodes in this data set. As Zip codes are added over time, it's difficult to say how many zip codes were in Ohio for the 2016 election. Using today's number of Zip codes, of which there are 1,447 - 2016 shows 76.6 % of current zip codes contributed to the 2016 campaigns.
+
+
+
+```{r number of zipcodes, echo=FALSE}
+
+length(zip_freq$contbr_zip)
+
+
+```
+
+
+Despite that, the distribution is skewed to a much smaller number of zip codes
+I've pulled down the counties based upon zip code from [ZipCodestoGo.com](https://www.zipcodestogo.com/Ohio/) for the state of Ohio and loaded them in order to identify the county associated. 
+
+In doing so we see that ~51% of all contributions occurred within 1 of 5 counties.
+
+- Franklin County; Home to Columbus, Ohio, Capital City and most populous county
+- Cuyahoga County; Home to Cleveland, Ohio, 2nd most populous county
+- Hamilton County; Home to Cincinnati, Ohio, 3rd most populous county
+- Montgomery County; Home to Dayton, Ohio, 5th most populous county
+- Summit County; Home to Akron, Ohio, 4th most populous county
+
+_Source: [OhioDemographics.com](https://www.ohio-demographics.com/counties_by_population)_
+
+However, when we look to see the top 51% of contributions by total dollar amount, it's contained within 3 counties.
+
+Since the Republican National Convention was held in Cleveland which is in Cuyahoga county it seems reasonable that it could have edged out Franklin county for contribution dollars.
+
+```{r geo frames, echo=FALSE}
+
+
+# create a df for geographic transformations and plots
+
+geo_party <- fec[,c(3:7,10:11,18:30)]
+
+
+# create a df for top county from the geo_party df
+
+top_county <- geo_party %>%
+  group_by(county) %>%
+  summarize(n = n()) %>%
+  arrange(desc(n)) %>%
+  mutate(prop = n/sum(n)) %>%
+  arrange(desc(prop)) %>%
+  mutate(cumulative = cumsum(prop))
+
+
+top_county$county <-  factor(top_county$county, levels = top_county$county)
+
+
+ggplot(data = subset(top_county, cumulative <= 0.51),
+       aes(x = reorder(county, -n), y = n)) +
+  geom_bar(stat = "identity") +
+  ylab("# Contributions") +
+  xlab("County") +
+  ggtitle("Top 51% of Contributions by County (Count)") +
+  theme_gray() +
+  theme(axis.line = element_line(size = 1, colour = "black"),
+        text = element_text(size = 9),
+        axis.text.x = element_text(angle = 45, hjust = 1),
+        plot.title = element_text(size = 14, face = "bold"),
+        legend.title = element_blank())
+
+head(top_county,20)
+```
+
+
+```{r total by county, echo=FALSE}
+
+# Create plots by county ranked by the sum of total contributions. Add in proportion column and a cumulative column.
+
+
+
+tot_by_county <- geo_party %>%
+  group_by(county) %>%
+  summarise(sum = sum(contb_receipt_amt)) %>%
+  arrange(desc(sum)) %>%
+  mutate(prop = sum/sum(sum)) %>%
+  arrange(desc(prop)) %>%
+  mutate(cumulative = cumsum(prop)) 
+
+
+tot_by_county$county <- factor(tot_by_county$county,
+                               levels = tot_by_county$county)
+
+ggplot(data = subset(tot_by_county, cumulative <= 0.51),
+       aes(x = county, y = sum)) +
+  geom_bar(stat = "identity") +
+  ylab("Total Contributions") +
+  xlab("County") +
+  ggtitle("Top 51% of Contributions by County (USD)") + 
+  scale_y_continuous(labels = dollar) + 
+  theme_gray() +
+  theme(axis.line = element_line(size = 1, colour = "black"),
+        text = element_text(size = 9),
+        axis.text.x = element_text(angle = 45, hjust = 1),
+        plot.title = element_text(size = 14, face = "bold"),
+        legend.title = element_blank())
+
+head(tot_by_county,20)
+```
+
+
+
+Having also loaded in the cities that go along with the Zip codes, and having run into issues with invalid city names in the original data source (Zip codes, counties instead of cities and misspellings) I've grouped the counts by the cities associated with the zip_codes.csv loaded previously.
+
+As there are numerous cities per county, the 51% line includes more. However Columbus, Cleveland, Dayton & Akron are all in the top spots.
+
+```{r total by city, echo=FALSE}
+
+
+tot_by_city <- geo_party %>%
+  group_by(city) %>%
+  summarise(n = n()) %>%
+  arrange(desc(n)) %>%
+  mutate(prop = n/sum(n)) %>%
+  arrange(desc(prop)) %>%
+  mutate(cumulative = cumsum(prop))
+
+
+tot_by_city$city <- factor(tot_by_city$city, levels = tot_by_city$city)
+
+ggplot(data = subset(tot_by_city, cumulative <= 0.51),
+       aes(x = city, y = n)) +
+  geom_bar(stat = "identity") +
+  ylab("# Contributions") +
+  xlab("City") +
+  ggtitle("Top 51% of Contributions by City (Count)") +
+  theme_gray() +
+  theme(axis.line = element_line(size = 1, colour = "black"),
+        text = element_text(size = 9),
+        axis.text.x = element_text(angle = 45, hjust = 1),
+        plot.title = element_text(size = 14, face = "bold"),
+        legend.title = element_blank())
+
+
+
+tot_by_city <- geo_party %>%
+  group_by(city) %>%
+  summarise(sum = sum(contb_receipt_amt)) %>%
+  mutate(prop = sum/sum(sum)) %>%
+  arrange(desc(prop)) %>%
+  mutate(cumulative = cumsum(prop)) %>%
+  arrange(desc(sum))
+
+
+ggplot(data = subset(tot_by_city, cumulative <= 0.51),
+       aes(x = reorder(city, -sum), y = sum)) +
+  geom_bar(stat = "identity") +
+  ylab("Total Contributions") +
+  xlab("City") +
+  ggtitle("Top 51% of Contributions by City (USD)") +
+   scale_y_continuous(labels = dollar) + 
+  theme_gray() +
+  theme(axis.line = element_line(size = 1, colour = "black"),
+        text = element_text(size = 9),
+        axis.text.x = element_text(angle = 45, hjust = 1),
+        plot.title = element_text(size = 14, face = "bold"),
+        legend.title = element_blank())
+
+
+
+
+```
+
+
+
+## Univariate Analysis
+
+To summarize the above, a sizeable number of donors make smaller donations, and the majority only donate once. Additionally, despite the Republicans having far more candidates, the Democrats outpaced the Republicans both in the number of contributions and in the total amounts raised.
+
+Both the majority of individual contributions and the majority of the sum total came from a limited number of counties and cities. The standouts being the more populous counties and cities instead of the more rural counties and cities.
+
+Franklin County accounted for 16.8% of all contributions, and 17.9% of the total contributions.
+
+I created a two new variables; Party and electionType. I've also cleaned the zipcodes within the data set, cast the date variable from char to a date, and joined in a clean dataset with zipcodes from a reputable source.
+
+The City variable had numerous faulty data points due to apparent data entry errors, and the zip code variable originally had rows with the wrong number of integers for a valid zip code.
+
+## Bivariate Plots
+
+Now we will begin to look at the relationship of multiple variables to one another
+
+
+First, I want to see the break out of candidates by party which shows that the Republicans fielded a whopping 16 Candidates in the 2016 Presidential election
+
+```{r contrib by party, echo=FALSE}
+#names(fec)
+
+# Count candidates by party
+
+cand_party <- fec %>%
+  distinct(cand_nm,party_granular) %>%
+  group_by(party_granular) %>%
+  summarize(count = n())
+  
+# Contributions by party
+
+
+party_sum <- fec %>%
+  group_by(party_granular) %>%
+  summarize(count = n(), sum = sum(contb_receipt_amt))
+
+
+ggplot(data = cand_party, aes(x = reorder(party_granular, -count), y = count,
+                              fill = party_granular)) +
+  scale_fill_manual(values = party_colors) + 
+  geom_bar(stat = "identity")  +
+  geom_text(aes( x = reorder(party_granular, -count), y = count + .5, 
+                 label = round(count, 0) )) +
+  theme_gray() +
+  theme(axis.line = element_line(size = 1, colour = "black"),
+        text = element_text(size = 9),
+        axis.title.y = element_blank(),
+        axis.title.x = element_blank(),
+        axis.text.x = element_blank(),
+        legend.title = element_blank(),
+        plot.title = element_text(size = 14, face = "bold")) +
+  ggtitle("# Candidates by Party")
+```
+
+
+Knowing that, it's unsurprising that the Republican party as a whole outraised all the other parties.
+
+
+```{r $$ by party, echo=FALSE}
+
+
+ ggplot(data = party_sum, aes(x = reorder(party_granular, -sum), y = sum,
+                           fill = party_granular)) +
+  scale_fill_manual(values = party_colors) +
+  geom_bar(stat = "identity") +
+  scale_y_continuous(labels = dollar) + 
+  ggtitle("Total Contributions by Party (USD)") +
+  theme_gray() +
+  theme(axis.line = element_line(size = 1, colour = "black"),
+        text = element_text(size = 9),
+        axis.title.x = element_blank(),
+        axis.text.x = element_blank(),
+        plot.title = element_text(size = 14, face = "bold"),
+        legend.title = element_blank())
+```
+
+
+If we look at the number of contributions per candidate though, we see that the two main Democratic candidates  received the lion's share of individual contributions. Which is especially surprising for Bernie Sanders to have the 2nd highest as he did not participate in the General Election.
+
+
+```{r contrib by cand, echo=FALSE}
+party_gran_sum <- fec %>%
+  group_by(party_granular, cand_nm) %>%
+  summarize(count = n(),sum = sum(contb_receipt_amt)) %>%
+  arrange(desc(sum))
+
+ggplot(data = party_gran_sum, aes(x = reorder(cand_nm, count), y = count,
+                           fill = party_granular)) +
+  scale_fill_manual(values = party_colors) +
+  geom_bar(stat = "identity") +
+  xlab("Candidate") +
+  ylab("# Contributions") +
+  labs(fill = "Affiliated Party") + 
+  coord_flip() +
+  ggtitle("# Contributions per Candidate") +
+  theme_gray() +
+  theme(axis.line = element_line(size = 1, colour = "black"),
+        text = element_text(size = 9),
+        axis.title = element_blank(),
+        axis.text.x = element_text(angle = 45, hjust = 1),
+        plot.title = element_text(size = 14, face = "bold"),
+        legend.title = element_blank())
+
+
+party_gran_sum
+
+
+
+```
+
+
+Bernie Sanders contribution place begins to make more sense as we look at the contributions by party and election type. 
+
+In order to see this in a more normalized fashion, here are the Democratic and Republican parties on a log10 scale.
+
+
+
+
+```{r boxplot by party, echo=FALSE, message=FALSE, warning=FALSE}
+
+
+# find th IQR for the Democrat and Republican Parties only. Use a Log10 Scale on the y axis to normalize.
+
+ggplot(subset(fec, fec$party != "Other" ),aes(x = party, y = contb_receipt_amt, fill = party)) +
+  geom_boxplot() +
+  scale_y_log10(labels = comma) +
+  xlab('party') +
+  ylab('Contribution Amount') +
+  scale_fill_manual(values = party_colors) + 
+  theme_gray() +
+  theme(axis.line = element_line(size = 1, colour = "black"),
+        text = element_text(size = 9))
+
+
+by(subset(fec, fec$party != "Other" )$contb_receipt_amt,subset(fec, fec$party != "Other" )$party, summary)
+
+```
+
+
+The Republican party had the higher mean and median by more than double that of the Demcrat party.
+
+
+```{r boxplot by cand, echo=FALSE, message=FALSE, warning=FALSE}
+
+# Graph IQR by candidates, excuding 'Other'
+
+ggplot(subset(fec, fec$party != "Other"), aes(x = cand_nm, y = contb_receipt_amt, fill = party)) +
+  geom_boxplot() +
+  scale_fill_manual(values = party_colors) + 
+  scale_y_log10() + 
+  theme_gray() +
+  theme(axis.line = element_line(size = 1, colour = "black"),
+        text = element_text(size = 9),
+        axis.text.x = element_text(angle = 45, hjust = 1)) 
+
+```
+
+
+Using a boxplot to see the distribution across all the candidates, we can see John Kasich had the largest interquartile range, George Pataki had the highest median while our front running  candidates Hillary and Donald trump have the smallest interquartile ranges and the most outliers. These outliers represent contributors with a higher donation than the majority.
+
+This makes sense given the difference in contributions overall for the front candidates.
+
+
+Moving on to the distribution across the elections themselves and we can see that the majority of all contributions were during the Primary and not during the General Election. 
+
+```{r party by election, echo=FALSE}
+sum_party_elec <- fec %>%
+  group_by(electionType,party_granular) %>%
+  summarize(n = n(),sum = sum(contb_receipt_amt))
+#names(sum_party_elec)
+
+
+ggplot(sum_party_elec, aes(x = reorder(party_granular, -n), y = n,
+                           fill = party_granular)) +
+  scale_fill_manual(values = party_colors) +
+  geom_bar(stat = "identity") +
+  xlab("Party") +
+  ylab("# Contributions") +
+  ggtitle("# Contributions by Election (Count)") +
+  scale_y_continuous(labels = comma) + 
+  theme_gray() +
+  theme(axis.line = element_line(size = 1, colour = "black"),
+        text = element_text(size = 9),
+        axis.text.x = element_text(angle = 45, hjust = 1),
+        plot.title = element_text(size = 14, face = "bold"),
+        legend.title = element_blank(),
+        legend.position = "none") +
+  facet_wrap(~ electionType)
+
+
+ggplot(sum_party_elec, aes(x = reorder(party_granular, -sum), y = sum,
+                           fill = party_granular)) +
+  scale_fill_manual(values = party_colors) +
+  geom_bar(stat = "identity") +
+  xlab("Party") +
+  ylab("Total Contributions") +
+  ggtitle("Total Contributions by Election (USD)") +
+  scale_y_continuous(labels = dollar) + 
+  theme_gray() +
+  theme(axis.line = element_line(size = 1, colour = "black"),
+        text = element_text(size = 9),
+        axis.text.x = element_text(angle = 45, hjust = 1),
+        plot.title = element_text(size = 14, face = "bold"),
+        legend.title = element_blank(),
+        legend.position = "none") +
+  facet_wrap( ~ electionType)
+
+
+
+```
+
+
+Taking a closer look at each county and the donations per 1000 people we find that Belmont county donoted the most per capita of any county at a rate of $3.11 per person, or $3,111.37 per 1,000 people.
+
+In fact the top 4 counties for Republican contributions out contributed the top Democrat county.
+
+
+
+```{r contrib by county/party, echo=FALSE, message=FALSE, warning=FALSE}
+
+
+party_by_county <- fec %>%
+  group_by(county,party) %>%
+  summarise(total = sum(contb_receipt_amt)) %>%
+  left_join(pop_oh_county,by = c("county" = "County")) %>%
+  mutate(per_cap = total/Population) %>%
+  mutate(per_cap_th = per_cap * 1000)
+
+top_rep <- party_by_county %>%
+  filter(party == 'Republican') %>%
+  arrange(desc(per_cap_th))
+  
+top_rep <- head(top_rep,25)
+
+
+top_dem <- party_by_county %>%
+  filter(party == 'Democrat') %>%
+  arrange(desc(per_cap_th))
+  
+top_dem <- head(top_dem,25)
+
+
+
+p2 <- ggplot(data = top_rep,  aes(x = reorder(county, per_cap_th),
+                                  y = per_cap_th, 
+                                  fill = party)) +
+  geom_bar(stat = "identity") + 
+  coord_flip() + 
+  ggtitle("Republican Candidates") + 
+  theme_gray() + 
+  labs(x = "County", y = "Contribution amount per 1000 people")+ 
+  scale_fill_manual(values = party_colors) + 
+  theme(axis.line = element_line(size = 1, colour = "black"),
+        text = element_text(size = 9),
+        axis.text.x = element_text(angle = 45, hjust = 1),
+        plot.title = element_text(size = 10, face = "bold"),
+        legend.title = element_blank(),
+        legend.position = "none") 
+
+
+p1 <- ggplot(data = top_dem,  aes(x = reorder(county, per_cap_th),
+                                  y = per_cap_th, 
+                                  fill = party)) +
+  geom_bar(stat = "identity") + 
+  coord_flip() + 
+  ggtitle("Democratic Candidates") + 
+  labs(x = "County", y = "Contribution amount per 1000 people") + 
+  scale_fill_manual(values = party_colors) + 
+  theme(axis.line = element_line(size = 1, colour = "black"),
+        text = element_text(size = 9),
+        axis.text.x = element_text(angle = 45, hjust = 1),
+        plot.title = element_text(size = 10, face = "bold"),
+        legend.title = element_blank(),
+        legend.position = "none") 
+        
+
+grid.arrange(p1,p2,ncol = 2)
+
+top_rep
+top_dem
+
+```
+
+
+The rank column denotes the population rank of the particular county. In sorting the dataframe by population set we see that contrary to what we might expect, the most populous county does not donate the largest amount per person.
+
+```{r counties ordered by pop, echo=FALSE, message=FALSE, warning=FALSE}
+
+ggplot(data = subset(party_by_county, Rank <= 25 & party != 'Other'),
+       aes(x = reorder(county, -Rank), y = per_cap_th, fill = party)) + 
+  geom_bar(stat = "identity") + 
+  facet_wrap( ~ party ) + 
+  coord_flip() +
+  scale_fill_manual(values = party_colors) + 
+  theme_gray() +
+  theme(axis.line = element_line(size = 1, colour = "black"),
+        text = element_text(size = 9),
+        axis.text.x = element_text(angle = 45, hjust = 1),
+        plot.title = element_text(size = 14, face = "bold"),
+        legend.title = element_blank(),
+        legend.position = "none") 
+
+
+
+
+```
+
+
+
+This boxplot shows that for the selected occupations, donations to the Republican candidate tend to be higher.
+Additionally, of the selected occupations only "Attorney" and "Physician" sent more donations to a Non-Republican candidate.
+
+```{r contrib by occ, echo=FALSE, message=FALSE, warning=FALSE}
+
+contributions_group <- contributions_group %>%
+  ungroup()
+
+
+ggplot(subset(contributions_group,
+              contributions_group$contbr_occupation == 'PHYSICIAN' |
+                contributions_group$contbr_occupation == 'RETIREE' | 
+                contributions_group$contbr_occupation == 'NOT EMPLOYED' |
+                contributions_group$contbr_occupation ==  'ATTORNEY' | 
+                contributions_group$contbr_occupation == 'CEO' | 
+                contributions_group$contbr_occupation == 'PRESIDENT' | 
+                contributions_group$contbr_occupation == 'STUDENT' | 
+                contributions_group$contbr_occupation == 'JUDGE'),
+       aes(factor(contbr_occupation),y = contb_receipt_amt,
+           fill = party_granular)) +
+  scale_colour_manual(values = c('#000000','#000000','#000000','#000000','#000000')) +
+  scale_fill_manual(values = party_colors)+
+  geom_boxplot(alpha = .7) +
+  scale_y_log10(label = dollar) +
+    theme_gray() +
+  theme(axis.line = element_line(size = 1, colour = "black"),
+        text = element_text(size = 9),
+        axis.text.x = element_text(angle = 45, hjust = 1),
+        plot.title = element_text(size = 14, face = "bold"),
+        legend.title = element_blank())+
+  labs(x = "Occupation", y = "Contribution Amount", 
+       title = "Contributions per Party by Occupation")
+
+```
+
+
+## Bivariate Analysis
+
+In summary, on average there were more contributions during the Primary Election than the General, Republican donors tend to give larger donations on average despite there being more Democrat donors overall.
+
+Additionally the amount of contribution is not directly correlated to the population of the county. 
+
+
+
+## Multivariate Plots
+
+
+The first multivariate plot I want to look into is how this data is spread geographically across the state. By mapping first the number of contributions against the lat/long from the zipcode dataset things look a little purple. Maybe more magenta than purple but not 100% clear.
+
+```{r geo map county, echo=FALSE, message=FALSE, warning=FALSE}
+
+# geo dataframe
+
+geo_party_count <- fec %>%
+  group_by(county,party) %>%
+  mutate(n = n(), total = sum(contb_receipt_amt))
+
+
+box <- make_bbox(lon = geo_party$longitude, lat = geo_party$latitude, f = 0.01)
+
+
+
+mapmap <- get_map(location = box, maptype = "roadmap",  scale = 5, color = "bw", 
+                  zoom = 10)
+
+ggmap(mapmap) +
+   geom_point(data = geo_party_count, aes(x = longitude, y = latitude, 
+                                          size = n, color = party),
+              alpha = 0.5) +
+  scale_color_manual(values = party_colors)
+
+```
+
+
+If we change the geom size to be based upon contribution total per county, it becomes clear that the Republican party received the larger amounts in total than the Democrat party candidates. 
+
+The blue dots become isolated patches within a sea of red.
+
+```{r geo $$ map, echo=FALSE}
+ggmap(mapmap) +
+   geom_point(data = geo_party_count, aes(x = longitude, y = latitude, 
+                                          size = total, color = party), 
+              alpha = 0.5) +
+  scale_color_manual(values = party_colors)
+```
+
+
+Now I want to look into the timelines of the conributions.
+
+I've truncated the candidates list down to the candidates who were a party of the General Election Ballot in order to look for patterns in the contributions dates.
+
+
+```{r contrib over time, echo=FALSE, message=FALSE, warning=FALSE}
+
+cont_subset <- fec[,c(2:3,5,7,10:11,18:26)]
+
+
+cont_subset <- cont_subset %>%
+  mutate(contb_receipt_dt = as.Date(contb_receipt_dt, format = "%d-%b-%y")) %>%
+  filter(contb_receipt_dt > '2015-05-01' & contb_receipt_dt < '2016-12-01') %>%
+  filter(nominee == TRUE) %>%
+  group_by(party_granular,cand_nm,year_week = floor_date(contb_receipt_dt,
+                                                         "1 week")) %>%
+  summarize(count = n(),sum = sum(contb_receipt_amt))
+
+
+ggplot(cont_subset, aes( x = year_week, y = count)) +
+  geom_line(aes(color = cand_nm)) +
+  scale_color_manual(values = c("#1404BD","#FED105","#000000",
+                                "#00A95C","#C40303")) +
+  scale_x_date(date_breaks = "4 weeks") +
+  labs(x = "Week", color = "Party Nominees",
+       title = "Contributions over Time") +
+  theme(axis.line = element_line(size = 1, colour = "black"),
+      text = element_text(size = 9),
+        axis.text.x = element_text(angle = 45, hjust = 1),
+        plot.title = element_text(size = 14, face = "bold"))
+
+  
+```
+
+
+Some of the notable dates during this election include:
+
+- May 26, 2016 - Donald Trump became Presumptive Republican Nominee by securing the necessary delegates.
+- June 6, 2016 - Hillary Clinton became the Presumptive Democratic Nominee by securing the necessary delegates. 
+- September 9, 2016 - First Presidential Debate
+- October 9, 2016 - Second Presidential Debate
+- October 19, 2016 - Final Presidential Debate
+- November 8, 2016 - Election day
+
+
+Those dates are marked in the following plot with a pruple dashed line.
+```{r time after primary, echo=FALSE, message=FALSE, warning=FALSE}
+
+
+ggplot(cont_subset, aes( x = year_week, y = sum)) +
+  geom_line(aes(color = cand_nm)) +
+  scale_color_manual(values = 
+                       c("#1404BD","#FED105","#000000","#00A95C","#C40303")) +
+  scale_x_date(date_breaks = "4 weeks") +
+  labs(x = "Week", color = "Party Nominees", 
+       title = "Contributions (USD) over Time",
+       subtitle = "With Nomination Date Splines",
+       y = "Total Amount (USD)") +
+    ylim(0,400000) + 
+  scale_y_continuous(labels = dollar) +
+  geom_vline(aes(xintercept = as.Date("2016-05-26")), 
+             color = "red", lty = 2) +
+  geom_vline(aes(xintercept = as.Date("2016-06-06")),
+             color = "blue", lty = 2) +
+  geom_vline(aes(xintercept = as.Date("2016-09-26")), 
+             color = "purple", lty = 2) +
+  geom_vline(aes(xintercept = as.Date("2016-10-09")), 
+             color = "purple", lty = 2) +
+  geom_vline(aes(xintercept = as.Date("2016-10-19")), 
+             color = "purple", lty = 2) +
+  geom_vline(aes(xintercept = as.Date("2016-11-08")), 
+             color = "purple", lty = 2) +
+   theme(axis.line = element_line(size = 1, colour = "black"),
+      text = element_text(size = 9),
+        axis.text.x = element_text(angle = 45, hjust = 1),
+        plot.title = element_text(size = 14, face = "bold"))
+```
+
+While some peaks and valleys seem to align, I want to zoom in on the General election itself to better see what is aligning.
+
+```{r time zoomed, echo=FALSE, message=FALSE, warning=FALSE}
+break.vec <- c(as.Date("2016-05-15"),
+               seq(from = as.Date("2016-05-15"), to = as.Date("2016-11-27"),
+                   by = "week"),
+               as.Date("2016-11-27"))
+
+
+ggplot(cont_subset, aes( x = year_week, y = sum)) +
+  geom_line(aes(color = cand_nm)) +
+  scale_color_manual(values = 
+                       c("#1404BD","#FED105","#000000","#00A95C","#C40303")) +
+  scale_x_date(date_breaks = "1 week") +
+  labs(x = "Week", color = "Party Nominees", 
+       title = "Contributions (USD) Post Nomination",
+       subtitle = "with Notable Dates",
+       y = "Total Amount (USD)") +
+    ylim(0,400000) + 
+  scale_x_date(breaks = break.vec, limits = c(min(break.vec), 
+                                              max = max(break.vec))) +
+  scale_y_continuous(labels = dollar) +
+  geom_vline(aes(xintercept = as.Date("2016-09-26")),
+             color = "purple", lty = 2) +
+  geom_vline(aes(xintercept = as.Date("2016-10-09")),
+             color = "purple", lty = 2) +
+  geom_vline(aes(xintercept = as.Date("2016-10-19")),
+             color = "purple", lty = 2) +
+  geom_vline(aes(xintercept = as.Date("2016-05-26")),
+             color = "red", lty = 2) +
+  geom_vline(aes(xintercept = as.Date("2016-06-06")), 
+             color = "blue", lty = 2) +
+  geom_vline(aes(xintercept = as.Date("2016-11-08")),
+             color = "purple", lty = 2) +
+   theme(axis.line = element_line(size = 1, colour = "black"),
+      text = element_text(size = 9),
+        axis.text.x = element_text(angle = 45, hjust = 1),
+        plot.title = element_text(size = 14, face = "bold"))
+```
+
+_The 3 dashed purple lines represent the dates of the 3 Presidential Debates and the election date._
+_The first 2 lines represent the nomination dates of the Democratic & Republican candidates respectively._
+
+
+```{r time with events, echo=FALSE, message=FALSE, warning=FALSE}
+ggplot(cont_subset, aes( x = year_week, y = count)) +
+  geom_line(aes(color = cand_nm)) +
+  scale_color_manual(values = 
+                       c("#1404BD","#FED105","#000000","#00A95C","#C40303")) +
+  scale_x_date(date_breaks = "1 week") +
+  labs(x = "Week", color = "Party Nominees", 
+       title = "Contributions Post Nomination",
+       subtitle = "with Notable Dates",
+       y = "Count") +
+  scale_x_date(breaks = break.vec, limits = c(min(break.vec), 
+                                              max = max(break.vec))) +
+  geom_vline(aes(xintercept = as.Date("2016-09-26")), 
+             color = "purple", lty = 2) +
+  geom_vline(aes(xintercept = as.Date("2016-10-09")),
+             color = "purple", lty = 2) +
+  geom_vline(aes(xintercept = as.Date("2016-10-19")),
+             color = "purple", lty = 2) +
+  geom_vline(aes(xintercept = as.Date("2016-05-26")),
+             color = "red", lty = 2) +
+  geom_vline(aes(xintercept = as.Date("2016-06-06")),
+             color = "blue", lty = 2) +
+  geom_vline(aes(xintercept = as.Date("2016-11-08")), 
+             color = "purple", lty = 2) +
+  theme(axis.line = element_line(size = 1, colour = "black"),
+      text = element_text(size = 9),
+        axis.text.x = element_text(angle = 45, hjust = 1),
+        plot.title = element_text(size = 14, face = "bold"))
+```
+
+
+Both number of contrbutions and the total contributions certainly appear to coincide with the presidential debates.
+Interestingly, the count of contributions is a stark contrast between the Democratic and Republican Nominees.
+
+There are a few peaks I'm curious about here. I've looked into the news cycles with the corresponding peaks and valleys and listed them below. I've selected news events that occured within the 7 days preceding the peak or valley.
+
+**Donald Trump**
+
+- Peak: Week of 6/19/2016 | [Pulse Nightclub shooting in Orlando, FL on June 12,2016](https://www.cnn.com/2016/06/12/us/orlando-nightclub-shooting/index.html)
+- Peak: Week of 7/10/2016 | FBI Recommends [no charges](https://www.nytimes.com/2016/07/06/us/politics/hillary-clinton-fbi-email-comey.html) be bought against Clinton regarding the classified emails.
+- Valley: Week of 7/24/2016 | While impossible to prove a null, it's odd that Trump's contributions dipped below $100,000 for the first time during the [Republican National Convention](https://www.2016cle.com/) which was held July 18-21, 2016. Notably, video of the crowd chanting "Lock her up!" went viral on [July 20](https://www.washingtonpost.com/news/the-fix/wp/2016/11/22/a-brief-history-of-the-lock-her-up-chant-as-it-looks-like-trump-might-not-even-try/).
+- Peak: Week of 8/7/2016 | The Democractic National Convention taking place July 25-28, or the back and forth between the [Khan Gold Star family and Donald Trump](https://thehill.com/policy/national-security/290049-trump-khan-feud-a-timeline) 
+- Peak: Week of 9/11/2016 | Clinton calls Trumps followers a [Basket of Deplorables](https://www.youtube.com/watch?v=OZHp4JLWjNw) on Sept 9, 2016 and [overheated after being diagnosed with pneumonia](https://www.usatoday.com/story/news/politics/elections/2016/2016/09/11/clinton-overheating-spell-may-intensify-focus-health/90231436/) on Sept 11, 2016
+Trump did not have another peak in either contribution totals or counts that did not correspond with a presidential debate.
+
+
+**Hillary Clinton**
+
+- Peak: week of 7/24/2016 | Correlates to the 2016 Republican National Convention. Notably, video of the crowd chanting "Lock her up!" went viral on July 20.
+- Peak: Week of 10/30/2016 | The F.B.I [resumes it's investigation](https://www.nytimes.com/2016/10/29/us/politics/fbi-hillary-clinton-email.html?module=inline) into Clinton-related emails. 
+
+While no causations or direct lines can truly be drawn between these events and the contributions, I do find it interesting to see how they align with what I would have expected to be incendiary issues.
+
+
+
+_Both candidates had a similar dip the week of September 25th following the first presidential debate. As such, I did not consider it divergent enough to investigate beyond the debate._
+
+
+
+
+
+
+
+
+
+## Multivariate Analysis
+
+
+Throough further exploration into the dataset, we can see that despite the larger number of contributions by Democrats, the Republican contributions just blew away the Democrats by a mile.
+
+Additionally, the timeline of contributions not only shows the week over week with some news points, but it also shows the absolute bottoming out of individual contributions to Donald Trump after the 2nd presidential debate.
+
+
+------
+
+# Final Plots and Summary
+### Plot One
+
+```{r echo=FALSE, Plot_One}
+ggmap(mapmap) +
+   geom_point(data = geo_party_count, aes(x = longitude, y = latitude, 
+                                          size = total, color = party), 
+              alpha = 0.8) +
+  scale_color_manual(values = party_colors) + 
+  theme_bw() + 
+  theme(axis.line = element_line(size = 1, colour = "black"),
+        text = element_text(size = 9),
+        axis.title = element_blank(),
+        axis.text = element_blank() ) +
+  ggtitle(" Total USD by Party & County") + 
+  labs(color = "Affiliated Party") 
+  
+  
+
+
+```
+
+### Description One
+
+The first plot I've selected is the total contributions by party overlaid on the map of Ohio.
+It really shows the disparity not only in the contribution amounts, but also int he geographical dispersion.
+
+The largest groupings are the significant metropolitan areas of the State. The Upper right amaglamation being Cleveland which is where the Republican National Convention was held in 2016.
+
+### Plot Two
+```{r echo=FALSE, Plot_Two}
+
+ggplot(sum_party_elec, aes(x = reorder(party_granular, -n), y = n,
+                           fill = party_granular)) +
+  scale_fill_manual(values = party_colors) +
+  geom_bar(stat = "identity") +
+  xlab("Party") +
+  ylab("# Contributions") +
+  ggtitle("# Contributions by Election (Count)") +
+  scale_y_continuous() + 
+  theme_gray() +
+  theme(axis.line = element_line(size = 1, colour = "black"),
+        text = element_text(size = 9),
+        axis.text.x = element_text(angle = 45, hjust = 1),
+        plot.title = element_text(size = 14, face = "bold"),
+        legend.title = element_blank(),
+        legend.position = "none") +
+  facet_wrap(~ electionType)
+
+
+```
+
+### Description Two
+
+The second plot I've selected shows the # of contributions by party, per election phase. I was not expecting the difference between the Primary and the General elections to be that disparate. It leads me to believe there's further data that could be used to inform this.
+
+Why is there such a difference? Is there are larger advertisement budget up front, or is there a trend after the Primary where it no longer makes a significant difference? Or was this more indicative of traditionally Republican Donors "giving up" after Donald Trump was nominated?
+
+
+### Plot Three
+```{r echo=FALSE, Plot_Three}
+ggplot(data = subset(party_by_county, Rank <= 25 & party != 'Other'),
+       aes(x = reorder(county, -Rank), y = per_cap_th, fill = party)) + 
+  geom_bar(stat = "identity") + 
+  facet_wrap( ~ party ) + 
+  coord_flip() +
+  scale_fill_manual(values = party_colors) + 
+  theme_gray() +
+  theme(axis.line = element_line(size = 1, colour = "black"),
+        text = element_text(size = 9),
+        axis.text.x = element_text(angle = 45, hjust = 1),
+        plot.title = element_text(size = 14, face = "bold"),
+        legend.title = element_blank(),
+        legend.position = "none") +
+  labs(x = "Counties by Population Rank", 
+       y = "Average Contribution per 1,000 people (USD)", 
+       title = "Average Contribution (USD) per 1,000 people by County")
+```
+
+### Description Three
+
+The third plot that I've selected I found incredibly interesting is the contrast between the most populous counties and the average contribution by population. Franklin County is the Capital seat, Cuyahoga is home to Cleveland and Hamilton is home to Cincinnati. 
+
+After the top 3, it wasn't even close. Likely also informed by a lower population and a higher contribution on average.
+
+------
+
+# Reflection
+
+The data by itself does not provide a lot of information, most of anything interesting needs to be brought against something else. For instance, there is no gender value, nor education level, and the Occupation data is incredibly messy. Even the variables that I would have expected to be clean (zip codes) have invalid zipcodes, phone numbers, a county & that's before getting into 5 digits vs 5+4.
+
+I think a lot of insight could be gleaned if the occupation value was normalized. There are separate values for CEO, C.E.O, and Chief Executive Officer to name a few. Due to the sheer number of occupations, I was not able to get into cleaning them. This disparity is what caused me not to investigate the occupation further. It's very possible that normalzing these names would lead to more detailed information.
+
+Another thing that could be done is to use the US Censuse Zip Code Tract Area data to align demographic statistics at the ZCTA level which would allow for education level, income and industry insight.
+
+
+### Sources
+
+* [Bubblemap with ggplot2](https://www.r-graph-gallery.com/330-bubble-map-with-ggplot2.html)
+* [ggmap Examples](https://rpubs.com/jiayiliu/ggmap_examples)
+* [Cookbook for R](http://www.cookbook-r.com/)
+* [Calculating proportion](https://community.rstudio.com/t/how-do-i-calculate-ratios-with-categorical-variables-in-a-summary/1917/16)
