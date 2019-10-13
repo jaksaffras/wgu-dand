@@ -3,7 +3,7 @@ title: "EDA - Ohio 2016 Presidential FEC Contributions"
 author: "Jaks Wildman"
 output:
   html_document: null
-
+  pdf_document: default
 ---
 
 # Introduction

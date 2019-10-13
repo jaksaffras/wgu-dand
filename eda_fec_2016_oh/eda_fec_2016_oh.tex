@@ -1,0 +1,816 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={EDA - Ohio 2016 Presidential FEC Contributions},
+            pdfauthor={Jaks Wildman},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\providecommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{EDA - Ohio 2016 Presidential FEC Contributions}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{Jaks Wildman}
+    \preauthor{\centering\large\emph}
+  \postauthor{\par}
+    \date{}
+    \predate{}\postdate{}
+  
+
+\begin{document}
+\maketitle
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+This is an Exploratory Data Analysis of the individual contributions
+made to 2016 Presidential Candidates from the state of Ohio. Ohio is
+known for being a battleground state, and I expect it will provide some
+interesting insight. Additionally, it is the state I most closely relate
+to as my home state.
+
+Within this analysis, we will seek to answer some general questions:
+
+\begin{quote}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  What is the total amount of contributions?
+\item
+  Which candiate had the highest contributions?
+\item
+  How do the contributions differ between the Primary \& General
+  Elections?
+\item
+  What is the geographic distribution of the contributions across the
+  state?
+\item
+  Is there an identifiable pattern to the contribution dates as related
+  to important dates during the campaign?
+\end{enumerate}
+\end{quote}
+
+The data source can be found here:
+\href{https://classic.fec.gov/disclosurep/pnational.do}{FEC
+Contributions to All Candidates}
+
+\hypertarget{univariate-section}{%
+\subsection{Univariate Section}\label{univariate-section}}
+
+Before we can dive into making plots and answering questions, we first
+need to get an overall feel for the data.
+
+There are 167,259 rows, and 18 columns. The only quantitative varible
+within the set is contb\_receipt\_amt, all others are categorical.
+
+Of note, the contb\_receipt\_dt column is not formatted as a date data
+type, there is no party affiliation and no marker for whether a candiate
+went on to become the nominee. We will add those in shortly.
+
+Important variables:
+
+\begin{itemize}
+\tightlist
+\item
+  cand\_nm : The candidate's name.
+\item
+  contb\_receipt\_amt: The amount of the contribution.
+\item
+  contb\_receipt\_dt: The date of the contribution.
+\item
+  election\_tp: The election type as G2016, P2016, or Unspecified.
+\item
+  contbr\_zip: The zip code of the contributor. Based on the head, this
+  will need cleaned down to a set of 5.
+\item
+  contbr\_occupation: As filled out by the contributor, their current
+  occupation.
+\end{itemize}
+
+\begin{verbatim}
+## 'data.frame':    167259 obs. of  18 variables:
+##  $ cmte_id          : chr  "C00580100" "C00580100" "C00580100" "C00580100" ...
+##  $ cand_id          : chr  "P80001571" "P80001571" "P80001571" "P80001571" ...
+##  $ cand_nm          : chr  "Trump, Donald J." "Trump, Donald J." "Trump, Donald J." "Trump, Donald J." ...
+##  $ contbr_nm        : chr  "SELL, GREG" "SELLE, JOAN" "SELLERS, JES" "ROOTRING, BEAU" ...
+##  $ contbr_city      : chr  "CLAYTON" "MENTOR" "CLEVELAND HTS" "CINCINNATI" ...
+##  $ contbr_st        : chr  "OH" "OH" "OH" "OH" ...
+##  $ contbr_zip       : int  45315 44060 44106 45208 44721 432141210 441071232 432022420 450365038 45249 ...
+##  $ contbr_employer  : chr  "INFORMATION REQUESTED" "RETIRED" "INFORMATION REQUESTED" "BGR CONSUMER UNDERSTANDING, LLC" ...
+##  $ contbr_occupation: chr  "INFORMATION REQUESTED" "RETIRED" "INFORMATION REQUESTED" "MARKET RESEARCH" ...
+##  $ contb_receipt_amt: num  97.1 53.5 69.4 88.4 -80 ...
+##  $ contb_receipt_dt : chr  "23-SEP-16" "01-SEP-16" "17-OCT-16" "15-NOV-16" ...
+##  $ receipt_desc     : chr  "" "" "" "" ...
+##  $ memo_cd          : chr  "X" "X" "X" "X" ...
+##  $ memo_text        : chr  "" "" "" "" ...
+##  $ form_tp          : chr  "SA18" "SA18" "SA18" "SA18" ...
+##  $ file_num         : int  1146165 1146165 1146165 1146165 1146165 1091718 1144564 1077404 1091718 1077404 ...
+##  $ tran_id          : chr  "SA18.102871" "SA18.165861" "SA18.143767" "SA18.110145" ...
+##  $ election_tp      : chr  "G2016" "G2016" "G2016" "G2016" ...
+\end{verbatim}
+
+There are 24 distinct candidates within this data set.
+
+\begin{verbatim}
+## [1] 24
+\end{verbatim}
+
+The contb\_receipt\_amt value has some outliers, which we'll use the
+federal contribution rules to normalize.
+
+Contribution rules to Candidate Committees by individuals:
+
+\begin{itemize}
+\tightlist
+\item
+  An individual may contribute up to \$2,700 per election, per
+  candidate.
+\item
+  The Primary \& General Elections are seen as separate elections
+\end{itemize}
+
+\emph{Source:
+\href{https://www.fec.gov/updates/contribution-limits-for-2015-2016/}{FEC
+\textbar{} Contribution limits for 2015-2016}}
+
+To do so, we'll need to group by election type, candidate then
+contributor name before removing the extra contributions
+
+\begin{verbatim}
+##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+## -10800.0     16.0     29.0    119.3     80.0  29100.0
+\end{verbatim}
+
+After grouping, we are still left with some outliers
+
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+## -8600.0   130.0   306.6   559.5   695.0 29100.0
+\end{verbatim}
+
+After removing the outliers, we get a mean of \$122.26 and a Median of
+\$30.00. Indicating that the while the average is 122, the common
+donated value is \$30.
+
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    0.08   19.00   30.00  122.26   80.00 2700.00
+\end{verbatim}
+
+Looking at the overall distribution, a simple histogram shows a
+reasonable amout of spread, though it's positively skewed towards the
+lower donation amounts which follows logically from the data summary.
+
+\includegraphics{eda_fec_2016_oh_files/figure-latex/plot contribution amount-1.pdf}
+
+Chopping up the contribution amounts into smaller buckets will give us a
+better overall sense of the contributions.
+
+I'm choosing \$0-15,\$15-30,\$30-45,\$45-60,\$60-100, \$100-200,
+\$50-1000 and \$1000-2700.
+
+As we would expect, the marjority of people are making smaller
+donations. After 100 the number sharply falls off until getting into the
+larger ranges of 200-500.
+
+\begin{verbatim}
+## buckets
+##          (0,15]         (15,30]         (30,45]         (45,60] 
+##           39298           43724           12412           22221 
+##        (60,100]       (100,200]       (200,500]     (500,1e+03] 
+##           23434            7240           10920            2744 
+## (1e+03,2.7e+03] 
+##            3133
+\end{verbatim}
+
+Now, looking into the contribution frequency by donor we can see that
+the vast majority of donors only contributied once as evidenced by this
+long tailed plot
+
+\begin{verbatim}
+## Warning: Removed 843 rows containing non-finite values (stat_bin).
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Removed 2 rows containing missing values (geom_bar).
+\end{verbatim}
+
+\includegraphics{eda_fec_2016_oh_files/figure-latex/contrib frequency plot-1.pdf}
+
+Next, reviewing the contribution frequency by occupation, we can see
+that Retirees are the most common donor far beyond any other group
+
+\begin{verbatim}
+## # A tibble: 25 x 2
+##    contbr_occupation         n
+##    <chr>                 <int>
+##  1 RETIRED               43565
+##  2 NOT EMPLOYED          10382
+##  3 INFORMATION REQUESTED  8435
+##  4 ATTORNEY               3316
+##  5 HOMEMAKER              3232
+##  6 PHYSICIAN              3035
+##  7 TEACHER                3017
+##  8 PROFESSOR              2529
+##  9 ENGINEER               1633
+## 10 SALES                  1615
+## # ... with 15 more rows
+\end{verbatim}
+
+Next, I want to look into the distribution based upon zip Code.
+
+There are 1,108 valid unique Ohio Zipcodes in this data set. As Zip
+codes are added over time, it's difficult to say how many zip codes were
+in Ohio for the 2016 election. Using today's number of Zip codes, of
+which there are 1,447 - 2016 shows 76.6 \% of current zip codes
+contributed to the 2016 campaigns.
+
+\begin{verbatim}
+## [1] 1108
+\end{verbatim}
+
+Despite that, the distribution is skewed to a much smaller number of zip
+codes I've pulled down the counties based upon zip code from
+\href{https://www.zipcodestogo.com/Ohio/}{ZipCodestoGo.com} for the
+state of Ohio and loaded them in order to identify the county
+associated.
+
+In doing so we see that \textasciitilde51\% of all contributions
+occurred within 1 of 5 counties.
+
+\begin{itemize}
+\tightlist
+\item
+  Franklin County; Home to Columbus, Ohio, Capital City and most
+  populous county
+\item
+  Cuyahoga County; Home to Cleveland, Ohio, 2nd most populous county
+\item
+  Hamilton County; Home to Cincinnati, Ohio, 3rd most populous county
+\item
+  Montgomery County; Home to Dayton, Ohio, 5th most populous county
+\item
+  Summit County; Home to Akron, Ohio, 4th most populous county
+\end{itemize}
+
+\emph{Source:
+\href{https://www.ohio-demographics.com/counties_by_population}{OhioDemographics.com}}
+
+However, when we look to see the top 51\% of contributions by total
+dollar amount, it's contained within 3 counties.
+
+Since the Republican National Convention was held in Cleveland which is
+in Cuyahoga county it seems reasonable that it could have edged out
+Franklin county for contribution dollars.
+
+\includegraphics{eda_fec_2016_oh_files/figure-latex/geo frames-1.pdf}
+
+\begin{verbatim}
+## # A tibble: 20 x 4
+##    county         n   prop cumulative
+##    <fct>      <int>  <dbl>      <dbl>
+##  1 Franklin   27831 0.168       0.168
+##  2 Cuyahoga   21861 0.132       0.301
+##  3 Hamilton   16971 0.103       0.403
+##  4 Montgomery  8269 0.0500      0.453
+##  5 Summit      7896 0.0478      0.501
+##  6 Lucas       5867 0.0355      0.536
+##  7 Butler      4663 0.0282      0.565
+##  8 Delaware    4349 0.0263      0.591
+##  9 Stark       4219 0.0255      0.617
+## 10 Lorain      3411 0.0206      0.637
+## 11 Warren      3388 0.0205      0.658
+## 12 Greene      3036 0.0184      0.676
+## 13 Clermont    2899 0.0175      0.694
+## 14 Lake        2667 0.0161      0.710
+## 15 Trumbull    2553 0.0154      0.725
+## 16 Mahoning    2511 0.0152      0.740
+## 17 Portage     2193 0.0133      0.754
+## 18 Licking     1921 0.0116      0.765
+## 19 Medina      1918 0.0116      0.777
+## 20 Fairfield   1862 0.0113      0.788
+\end{verbatim}
+
+\includegraphics{eda_fec_2016_oh_files/figure-latex/total by county-1.pdf}
+
+\begin{verbatim}
+## # A tibble: 20 x 4
+##    county          sum    prop cumulative
+##    <fct>         <dbl>   <dbl>      <dbl>
+##  1 Cuyahoga   3727887. 0.185        0.185
+##  2 Franklin   3608771. 0.179        0.364
+##  3 Hamilton   2813321. 0.139        0.503
+##  4 Summit      894400. 0.0443       0.547
+##  5 Stark       658080. 0.0326       0.580
+##  6 Montgomery  627084. 0.0311       0.611
+##  7 Delaware    573743. 0.0284       0.639
+##  8 Lucas       542903. 0.0269       0.666
+##  9 Butler      483375. 0.0239       0.690
+## 10 Lorain      363453. 0.0180       0.708
+## 11 Warren      359322. 0.0178       0.726
+## 12 Lake        296861. 0.0147       0.741
+## 13 Mahoning    277770. 0.0138       0.754
+## 14 Clermont    266109. 0.0132       0.768
+## 15 Geauga      257171. 0.0127       0.780
+## 16 Medina      244647. 0.0121       0.792
+## 17 Greene      234322. 0.0116       0.804
+## 18 Belmont     221460. 0.0110       0.815
+## 19 Trumbull    208703  0.0103       0.825
+## 20 Portage     168624. 0.00835      0.834
+\end{verbatim}
+
+Having also loaded in the cities that go along with the Zip codes, and
+having run into issues with invalid city names in the original data
+source (Zip codes, counties instead of cities and misspellings) I've
+grouped the counts by the cities associated with the zip\_codes.csv
+loaded previously.
+
+As there are numerous cities per county, the 51\% line includes more.
+However Columbus, Cleveland, Dayton \& Akron are all in the top spots.
+
+\includegraphics{eda_fec_2016_oh_files/figure-latex/total by city-1.pdf}
+\includegraphics{eda_fec_2016_oh_files/figure-latex/total by city-2.pdf}
+
+\hypertarget{univariate-analysis}{%
+\subsection{Univariate Analysis}\label{univariate-analysis}}
+
+To summarize the above, a sizeable number of donors make smaller
+donations, and the majority only donate once. Additionally, despite the
+Republicans having far more candidates, the Democrats outpaced the
+Republicans both in the number of contributions and in the total amounts
+raised.
+
+Both the majority of individual contributions and the majority of the
+sum total came from a limited number of counties and cities. The
+standouts being the more populous counties and cities instead of the
+more rural counties and cities.
+
+Franklin County accounted for 16.8\% of all contributions, and 17.9\% of
+the total contributions.
+
+I created a two new variables; Party and electionType. I've also cleaned
+the zipcodes within the data set, cast the date variable from char to a
+date, and joined in a clean dataset with zipcodes from a reputable
+source.
+
+The City variable had numerous faulty data points due to apparent data
+entry errors, and the zip code variable originally had rows with the
+wrong number of integers for a valid zip code.
+
+\hypertarget{bivariate-plots}{%
+\subsection{Bivariate Plots}\label{bivariate-plots}}
+
+Now we will begin to look at the relationship of multiple variables to
+one another
+
+First, I want to see the break out of candidates by party which shows
+that the Republicans fielded a whopping 16 Candidates in the 2016
+Presidential election
+
+\includegraphics{eda_fec_2016_oh_files/figure-latex/contrib by party-1.pdf}
+
+Knowing that, it's unsurprising that the Republican party as a whole
+outraised all the other parties.
+
+\includegraphics{eda_fec_2016_oh_files/figure-latex/$$ by party-1.pdf}
+
+If we look at the number of contributions per candidate though, we see
+that the two main Democratic candidates received the lion's share of
+individual contributions. Which is especially surprising for Bernie
+Sanders to have the 2nd highest as he did not participate in the General
+Election.
+
+\includegraphics{eda_fec_2016_oh_files/figure-latex/contrib by cand-1.pdf}
+
+\begin{verbatim}
+## # A tibble: 24 x 4
+## # Groups:   party_granular [5]
+##    party_granular cand_nm                   count      sum
+##    <chr>          <chr>                     <int>    <dbl>
+##  1 Democrat       Clinton, Hillary Rodham   70726 6784770.
+##  2 Republican     Kasich, John R.            4752 4454873.
+##  3 Republican     Trump, Donald J.          26265 4015624 
+##  4 Democrat       Sanders, Bernard          34514 1452268.
+##  5 Republican     Cruz, Rafael Edward 'Ted' 16032 1315968.
+##  6 Republican     Rubio, Marco               2457  786969.
+##  7 Republican     Carson, Benjamin S.        7943  725000.
+##  8 Republican     Bush, Jeb                   274  217655 
+##  9 Republican     Paul, Rand                  789  117620.
+## 10 Republican     Fiorina, Carly              625   83575.
+## # ... with 14 more rows
+\end{verbatim}
+
+Bernie Sanders contribution place begins to make more sense as we look
+at the contributions by party and election type.
+
+In order to see this in a more normalized fashion, here are the
+Democratic and Republican parties on a log10 scale.
+
+\includegraphics{eda_fec_2016_oh_files/figure-latex/boxplot by party-1.pdf}
+
+\begin{verbatim}
+## subset(fec, fec$party != "Other")$party: Democrat
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    0.08   11.00   25.00   78.46   50.00 2700.00 
+## -------------------------------------------------------- 
+## subset(fec, fec$party != "Other")$party: Republican
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##     0.8    25.0    50.0   198.5   100.0  2700.0
+\end{verbatim}
+
+The Republican party had the higher mean and median by more than double
+that of the Demcrat party.
+
+\includegraphics{eda_fec_2016_oh_files/figure-latex/boxplot by cand-1.pdf}
+
+Using a boxplot to see the distribution across all the candidates, we
+can see John Kasich had the largest interquartile range, George Pataki
+had the highest median while our front running candidates Hillary and
+Donald trump have the smallest interquartile ranges and the most
+outliers. These outliers represent contributors with a higher donation
+than the majority.
+
+This makes sense given the difference in contributions overall for the
+front candidates.
+
+Moving on to the distribution across the elections themselves and we can
+see that the majority of all contributions were during the Primary and
+not during the General Election.
+
+\includegraphics{eda_fec_2016_oh_files/figure-latex/party by election-1.pdf}
+\includegraphics{eda_fec_2016_oh_files/figure-latex/party by election-2.pdf}
+
+Taking a closer look at each county and the donations per 1000 people we
+find that Belmont county donoted the most per capita of any county at a
+rate of \$3.11 per person, or \$3,111.37 per 1,000 people.
+
+In fact the top 4 counties for Republican contributions out contributed
+the top Democrat county.
+
+\includegraphics{eda_fec_2016_oh_files/figure-latex/contrib by county/party-1.pdf}
+
+\begin{verbatim}
+## # A tibble: 25 x 7
+## # Groups:   county [25]
+##    county     party         total  Rank Population per_cap per_cap_th
+##    <chr>      <chr>         <dbl> <dbl>      <int>   <dbl>      <dbl>
+##  1 Belmont    Republican  210033.    36      67505    3.11      3111.
+##  2 Geauga     Republican  184970.    29      94031    1.97      1967.
+##  3 Delaware   Republican  393076.    14     204826    1.92      1919.
+##  4 Hamilton   Republican 1458458.     3     816684    1.79      1786.
+##  5 Monroe     Republican   20788     87      13790    1.51      1507.
+##  6 Auglaize   Republican   67971.    51      45804    1.48      1484.
+##  7 Stark      Republican  548484.     8     371574    1.48      1476.
+##  8 Washington Republican   88622.    41      60155    1.47      1473.
+##  9 Paulding   Republican   27377.    83      18760    1.46      1459.
+## 10 Cuyahoga   Republican 1806785.     2    1243857    1.45      1453.
+## # ... with 15 more rows
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 25 x 7
+## # Groups:   county [25]
+##    county   party       total  Rank Population per_cap per_cap_th
+##    <chr>    <chr>       <dbl> <dbl>      <int>   <dbl>      <dbl>
+##  1 Hamilton Democrat 1338035.     3     816684   1.64       1638.
+##  2 Cuyahoga Democrat 1895638.     2    1243857   1.52       1524.
+##  3 Athens   Democrat   92529.    37      65818   1.41       1406.
+##  4 Franklin Democrat 1784230.     1    1310300   1.36       1362.
+##  5 Delaware Democrat  178217.    14     204826   0.870       870.
+##  6 Geauga   Democrat   67801.    29      94031   0.721       721.
+##  7 Summit   Democrat  368259.     4     541918   0.680       680.
+##  8 Mahoning Democrat  152147.    12     229642   0.663       663.
+##  9 Greene   Democrat   99029.    18     167995   0.589       589.
+## 10 Lucas    Democrat  246308.     6     429899   0.573       573.
+## # ... with 15 more rows
+\end{verbatim}
+
+The rank column denotes the population rank of the particular county. In
+sorting the dataframe by population set we see that contrary to what we
+might expect, the most populous county does not donate the largest
+amount per person.
+
+\includegraphics{eda_fec_2016_oh_files/figure-latex/counties ordered by pop-1.pdf}
+
+This boxplot shows that for the selected occupations, donations to the
+Republican candidate tend to be higher. Additionally, of the selected
+occupations only ``Attorney'' and ``Physician'' sent more donations to a
+Non-Republican candidate.
+
+\includegraphics{eda_fec_2016_oh_files/figure-latex/contrib by occ-1.pdf}
+
+\hypertarget{bivariate-analysis}{%
+\subsection{Bivariate Analysis}\label{bivariate-analysis}}
+
+In summary, on average there were more contributions during the Primary
+Election than the General, Republican donors tend to give larger
+donations on average despite there being more Democrat donors overall.
+
+Additionally the amount of contribution is not directly correlated to
+the population of the county.
+
+\hypertarget{multivariate-plots}{%
+\subsection{Multivariate Plots}\label{multivariate-plots}}
+
+The first multivariate plot I want to look into is how this data is
+spread geographically across the state. By mapping first the number of
+contributions against the lat/long from the zipcode dataset things look
+a little purple. Maybe more magenta than purple but not 100\% clear.
+
+\includegraphics{eda_fec_2016_oh_files/figure-latex/geo map county-1.pdf}
+
+If we change the geom size to be based upon contribution total per
+county, it becomes clear that the Republican party received the larger
+amounts in total than the Democrat party candidates.
+
+The blue dots become isolated patches within a sea of red.
+
+\includegraphics{eda_fec_2016_oh_files/figure-latex/geo $$ map-1.pdf}
+
+Now I want to look into the timelines of the conributions.
+
+I've truncated the candidates list down to the candidates who were a
+party of the General Election Ballot in order to look for patterns in
+the contributions dates.
+
+\includegraphics{eda_fec_2016_oh_files/figure-latex/contrib over time-1.pdf}
+
+Some of the notable dates during this election include:
+
+\begin{itemize}
+\tightlist
+\item
+  May 26, 2016 - Donald Trump became Presumptive Republican Nominee by
+  securing the necessary delegates.
+\item
+  June 6, 2016 - Hillary Clinton became the Presumptive Democratic
+  Nominee by securing the necessary delegates.
+\item
+  September 9, 2016 - First Presidential Debate
+\item
+  October 9, 2016 - Second Presidential Debate
+\item
+  October 19, 2016 - Final Presidential Debate
+\item
+  November 8, 2016 - Election day
+\end{itemize}
+
+Those dates are marked in the following plot with a pruple dashed line.
+\includegraphics{eda_fec_2016_oh_files/figure-latex/time after primary-1.pdf}
+
+While some peaks and valleys seem to align, I want to zoom in on the
+General election itself to better see what is aligning.
+
+\includegraphics{eda_fec_2016_oh_files/figure-latex/time zoomed-1.pdf}
+
+\emph{The 3 dashed purple lines represent the dates of the 3
+Presidential Debates and the election date.} \emph{The first 2 lines
+represent the nomination dates of the Democratic \& Republican
+candidates respectively.}
+
+\includegraphics{eda_fec_2016_oh_files/figure-latex/time with events-1.pdf}
+
+Both number of contrbutions and the total contributions certainly appear
+to coincide with the presidential debates. Interestingly, the count of
+contributions is a stark contrast between the Democratic and Republican
+Nominees.
+
+There are a few peaks I'm curious about here. I've looked into the news
+cycles with the corresponding peaks and valleys and listed them below.
+I've selected news events that occured within the 7 days preceding the
+peak or valley.
+
+\textbf{Donald Trump}
+
+\begin{itemize}
+\tightlist
+\item
+  Peak: Week of 6/19/2016 \textbar{}
+  \href{https://www.cnn.com/2016/06/12/us/orlando-nightclub-shooting/index.html}{Pulse
+  Nightclub shooting in Orlando, FL on June 12,2016}
+\item
+  Peak: Week of 7/10/2016 \textbar{} FBI Recommends
+  \href{https://www.nytimes.com/2016/07/06/us/politics/hillary-clinton-fbi-email-comey.html}{no
+  charges} be bought against Clinton regarding the classified emails.
+\item
+  Valley: Week of 7/24/2016 \textbar{} While impossible to prove a null,
+  it's odd that Trump's contributions dipped below \$100,000 for the
+  first time during the \href{https://www.2016cle.com/}{Republican
+  National Convention} which was held July 18-21, 2016. Notably, video
+  of the crowd chanting ``Lock her up!'' went viral on
+  \href{https://www.washingtonpost.com/news/the-fix/wp/2016/11/22/a-brief-history-of-the-lock-her-up-chant-as-it-looks-like-trump-might-not-even-try/}{July
+  20}.
+\item
+  Peak: Week of 8/7/2016 \textbar{} The Democractic National Convention
+  taking place July 25-28, or the back and forth between the
+  \href{https://thehill.com/policy/national-security/290049-trump-khan-feud-a-timeline}{Khan
+  Gold Star family and Donald Trump}
+\item
+  Peak: Week of 9/11/2016 \textbar{} Clinton calls Trumps followers a
+  \href{https://www.youtube.com/watch?v=OZHp4JLWjNw}{Basket of
+  Deplorables} on Sept 9, 2016 and
+  \href{https://www.usatoday.com/story/news/politics/elections/2016/2016/09/11/clinton-overheating-spell-may-intensify-focus-health/90231436/}{overheated
+  after being diagnosed with pneumonia} on Sept 11, 2016 Trump did not
+  have another peak in either contribution totals or counts that did not
+  correspond with a presidential debate.
+\end{itemize}
+
+\textbf{Hillary Clinton}
+
+\begin{itemize}
+\tightlist
+\item
+  Peak: week of 7/24/2016 \textbar{} Correlates to the 2016 Republican
+  National Convention. Notably, video of the crowd chanting ``Lock her
+  up!'' went viral on July 20.
+\item
+  Peak: Week of 10/30/2016 \textbar{} The F.B.I
+  \href{https://www.nytimes.com/2016/10/29/us/politics/fbi-hillary-clinton-email.html?module=inline}{resumes
+  it's investigation} into Clinton-related emails.
+\end{itemize}
+
+While no causations or direct lines can truly be drawn between these
+events and the contributions, I do find it interesting to see how they
+align with what I would have expected to be incendiary issues.
+
+\emph{Both candidates had a similar dip the week of September 25th
+following the first presidential debate. As such, I did not consider it
+divergent enough to investigate beyond the debate.}
+
+\hypertarget{multivariate-analysis}{%
+\subsection{Multivariate Analysis}\label{multivariate-analysis}}
+
+Throough further exploration into the dataset, we can see that despite
+the larger number of contributions by Democrats, the Republican
+contributions just blew away the Democrats by a mile.
+
+Additionally, the timeline of contributions not only shows the week over
+week with some news points, but it also shows the absolute bottoming out
+of individual contributions to Donald Trump after the 2nd presidential
+debate.
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\hypertarget{final-plots-and-summary}{%
+\section{Final Plots and Summary}\label{final-plots-and-summary}}
+
+\hypertarget{plot-one}{%
+\subsubsection{Plot One}\label{plot-one}}
+
+\includegraphics{eda_fec_2016_oh_files/figure-latex/Plot_One-1.pdf}
+
+\hypertarget{description-one}{%
+\subsubsection{Description One}\label{description-one}}
+
+The first plot I've selected is the total contributions by party
+overlaid on the map of Ohio. It really shows the disparity not only in
+the contribution amounts, but also int he geographical dispersion.
+
+The largest groupings are the significant metropolitan areas of the
+State. The Upper right amaglamation being Cleveland which is where the
+Republican National Convention was held in 2016.
+
+\hypertarget{plot-two}{%
+\subsubsection{Plot Two}\label{plot-two}}
+
+\includegraphics{eda_fec_2016_oh_files/figure-latex/Plot_Two-1.pdf}
+
+\hypertarget{description-two}{%
+\subsubsection{Description Two}\label{description-two}}
+
+The second plot I've selected shows the \# of contributions by party,
+per election phase. I was not expecting the difference between the
+Primary and the General elections to be that disparate. It leads me to
+believe there's further data that could be used to inform this.
+
+Why is there such a difference? Is there are larger advertisement budget
+up front, or is there a trend after the Primary where it no longer makes
+a significant difference? Or was this more indicative of traditionally
+Republican Donors ``giving up'' after Donald Trump was nominated?
+
+\hypertarget{plot-three}{%
+\subsubsection{Plot Three}\label{plot-three}}
+
+\includegraphics{eda_fec_2016_oh_files/figure-latex/Plot_Three-1.pdf}
+
+\hypertarget{description-three}{%
+\subsubsection{Description Three}\label{description-three}}
+
+The third plot that I've selected I found incredibly interesting is the
+contrast between the most populous counties and the average contribution
+by population. Franklin County is the Capital seat, Cuyahoga is home to
+Cleveland and Hamilton is home to Cincinnati.
+
+After the top 3, it wasn't even close. Likely also informed by a lower
+population and a higher contribution on average.
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\hypertarget{reflection}{%
+\section{Reflection}\label{reflection}}
+
+The data by itself does not provide a lot of information, most of
+anything interesting needs to be brought against something else. For
+instance, there is no gender value, nor education level, and the
+Occupation data is incredibly messy. Even the variables that I would
+have expected to be clean (zip codes) have invalid zipcodes, phone
+numbers, a county \& that's before getting into 5 digits vs 5+4.
+
+I think a lot of insight could be gleaned if the occupation value was
+normalized. There are separate values for CEO, C.E.O, and Chief
+Executive Officer to name a few. Due to the sheer number of occupations,
+I was not able to get into cleaning them. This disparity is what caused
+me not to investigate the occupation further. It's very possible that
+normalzing these names would lead to more detailed information.
+
+Another thing that could be done is to use the US Censuse Zip Code Tract
+Area data to align demographic statistics at the ZCTA level which would
+allow for education level, income and industry insight.
+
+\hypertarget{sources}{%
+\subsubsection{Sources}\label{sources}}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://www.r-graph-gallery.com/330-bubble-map-with-ggplot2.html}{Bubblemap
+  with ggplot2}
+\item
+  \href{https://rpubs.com/jiayiliu/ggmap_examples}{ggmap Examples}
+\item
+  \href{http://www.cookbook-r.com/}{Cookbook for R}
+\item
+  \href{https://community.rstudio.com/t/how-do-i-calculate-ratios-with-categorical-variables-in-a-summary/1917/16}{Calculating
+  proportion}
+\end{itemize}
+
+
+\end{document}
